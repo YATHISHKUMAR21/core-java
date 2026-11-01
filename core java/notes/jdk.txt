@@ -1,0 +1,16 @@
+why jdk is required?
+if you see java version in terminal you will get java version.
+
+java --version
+
+and also you need to see
+ javac --version
+
+ if you download and then also if its not available means 
+ in windows go to env variable and then update accordingly
+
+ paste the javac to the env variable
+ javapath variable also.
+
+ 
+

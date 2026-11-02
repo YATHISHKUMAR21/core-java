@@ -33,6 +33,16 @@ public static void main(String[] args){
 //               ^
 // 1 error
     //so to avpid this error , we use type casting
+
+
+    int numb = 0b1010; //binary
+    int numx = 0x1E; //hexadecimal
+    //in java we can use underscore to differnetial
+    double numexpo= 12e10;
+
+    
+
+
 }
 }
 

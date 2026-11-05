@@ -1,0 +1,53 @@
+primitive - 4 categoreis
+
+integers.  -2 -0 1, 2, 3
+
+    integers have subtype - byte , short , int , long
+
+float. -2.3 8.3 , 78.3
+    float have double , float 
+
+character
+
+
+boolean. true , false
+
+
+
+int siz is 4byte
+int have range
+-2 power 31 to 2 power 31-1
+
+
+long have 8 byte
+-2 power 63 to 2 pow 63-1
+
+short is only 2 bytes
+range 2 pow 15 
+
+byte means 1 byte - 2 pow 8
+
+byte -128 to 127;
+
+
+/////////////////////
+
+float only takes 4 bytes
+double is 8 bytes
+in java double is the default value
+double num = 5.6;
+float num = 5.6f; so in java it will not assume as default byte
+
+///////////////////////
+char ch - 2 bytes
+in c its 1 byte
+but in java it follows unicde not ascii so it have 2 bytes
+
+char c = 'k'
+character uses single quote
+
+/////////////////////////
+
+boolean  true or false
+
+bool istrue = true

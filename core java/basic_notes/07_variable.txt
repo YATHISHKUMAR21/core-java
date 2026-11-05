@@ -1,0 +1,17 @@
+java is very strongly typed language
+
+text - string 
+num also we have category
+
+int - integer store in integer format , why not natural or whole beczuse in int we can store -ve , 0 etc
+
+//how do we store data
+
+//we need to put semicolon at each line
+
+
+<type>. <variable name> = assignement operator - number or value
+    int numb = 0b1010; //binary
+    int numx = 0x1E; //hexadecimal
+    //in java we can use underscore to differnetial
+    double numexpo= 12e10;

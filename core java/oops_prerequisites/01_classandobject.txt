@@ -1,0 +1,70 @@
+in programming world java everyhting is object
+
+object has 2 things - 
+physical properties
+every object
+
+so like when we need example table , we will give design or len , breadth to carpenter
+and carpenter does the table
+
+similarly in codin world we give design in the form of class and jvm acts as carpenterand created the table
+
+in java whatever you do , you should do inside the class
+
+where the class need to be created
+everything class need to be designed and we need to call the method
+
+but how to call the method
+if you want to call the method from the different class
+
+like in real object , if someone comes and tell they have idea , we dont buy
+we need to show the device or physical object
+
+similarly to call the function we need object 
+
+we have a calculator class now we need to create the calculator object
+
+calc cal;
+calc.add();
+
+we are creating the referenece not create rthe object
+how can we create the object , if we buy the phone , we create junk or e-waste
+
+similarly in oops if we create new object , it wioll create garbage space
+
+calculator calc = new calculator();
+
+mention <class name>. <variable name> = new <calc()>
+
+in java there is special method called constructor
+
+once we get the object we can call the method
+
+so in java to call the function we need object
+
+
+class Calculator{
+    
+    public int add(int n1 , int  n2){
+        return n1 + n2;
+
+        
+    }
+}
+
+
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        int num1=1;
+        int num2=2;
+
+        Calculator cal = new Calculator();
+        int res = cal.add(num1 , num2);
+        int res2 = cal.add(10 , 20);
+        System.out.println("The sum of " + num1 + " and " + num2 + " is: " + res);
+        System.out.println("The sum of 10 and 20 is: " + res2);
+    }
+    
+}

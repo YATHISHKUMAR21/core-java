@@ -1,0 +1,138 @@
+int num[]= {5,6,7};
+int num[]= new int[4];  //by default the values will be zero
+
+////////////////
+
+int nums[] = {1,2,3,4};
+
+////////////////
+
+multiple array combined like 
+
+array of array multidimesntianla
+int nums[][] = new int[3][4];
+
+3 indices and in eachindex 4 boxes are there
+  0123 
+0[1234]
+1[4567]
+2[5678]
+
+//////////////////////////
+
+int nums[] = new int[3][4]
+int random = Math.random()
+
+for(int i=0; i<3; i++){
+  for(int j=0; j<4;j++){
+    nums[i][j]
+  }
+  endl();
+}
+
+///////////////////////
+enhanced for loop
+
+for(int n: nums){
+    for(int m: n){. //here m is the element from 1d aray n
+        print(m )
+    }
+    endl()
+} //here n is not a simple variable its a single d array
+
+
+///////////
+what if we we have internal array at each block with varied number of columns
+
+int nums[][]= new int[3][];   //jagged array, but how can we manage individually?
+nums[0]=new int[3];
+nums[1]=new int[4];
+nums[2]=new int[5]
+
+0. 1 2 3
+1. 1 3 5 6 
+2. 3 2 4 5 6
+
+rows will be constant but every row the nums of col will be differenet
+
+for(int i=0; i<nums.length; i++){
+    for(int j=0; j<nums[i].length; j++){
+        nums[i][j]=(int)(math.random*10)
+    }
+}
+//this is called jagged array
+
+//drawbacks of array
+int nums[]=new int[4];
+so once you put space size you cannot modify , so if you want to increase the array size then it willl be difficult
+unlike js , in array we cannot store multiple values of different type in array for that in java we have collections.
+
+
+
+why i should know the lenth of array , like if len is 7 and if we want 8 then it wont be availbale
+
+class Student{
+     int rollno;
+     String name;
+     int marks;
+}
+
+public class Demo{
+    psvm(string args){
+        Student s1=new Student();
+        s1.rollno=1;
+        s1.name="ykr";
+        s1.marks=88;
+
+        Student s2=new Student();
+        s2.rollno=1;
+        s2.name="ykr";
+        s2.marks=88;
+
+        Student s3=new Student();
+        s3.rollno=1;
+        s3.name="ykr";
+        s3.marks=88;
+        Student students[]=new Student[3];
+        students[0]=s1;
+        students[1]=s2;
+        students[3]=s3;
+
+    }
+}
+
+//at this point we are creating an array which holds the reference
+we need to manually create the objects and reference in array
+
+for(int i=0;i<students.length;i++){
+    sop(s)
+
+
+//we cannot directly print objects
+we need to do like s1.rollno}
+
+
+students[i].name + students[i].marks. //we need to work with object attributes
+
+
+for each loop
+why we neead for each if we already have for?
+why we need to initialise , compare and then increment
+
+so we have foreach loop for array and array type of data
+//iterate all values and give me one value at a time
+
+for(int n: nums){
+    here n is the element from the nums array
+    that value will go to n
+    Sop(n);
+
+}
+
+so here no need to check and counter etc , it will do the work for us
+
+for(Student stud: students){
+    sop(stud.name , stud.marks);
+}
+
+

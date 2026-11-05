@@ -1,0 +1,11 @@
+int num =1 ;
+goes within the range means it will work
+
+int num = 0b101;
+System
+
+so it supports binary , hexa decimal , expo
+\/character
+char ch='1';
+ch= ch+1;  //it behave like integrers
+a++ , b++ will be happening on char

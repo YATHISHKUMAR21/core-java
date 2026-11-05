@@ -1,0 +1,76 @@
+1. Constructors in Java
+A constructor is a special block of code called automatically when an object is created using the new keyword. Its primary job is to initialize the newly created object's state (instance variables).
+
+Key Rules of Constructors
+Name must be identical to the class name.
+
+Must not declare any return type (not even void).
+
+Cannot be abstract, static, final, or synchronized.
+
+Types of Constructors
+A. Default Constructor
+If you do not define any constructor in a class, the Java compiler automatically inserts a public, no-argument constructor with an empty body (super();).
+
+Java
+class Student {
+    int id; // initialized to 0 by default constructor
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student(); // calls compiler-generated default constructor
+        System.out.println(s.id);  // Output: 0
+    }
+}
+B. No-Argument Constructor (User-Defined)
+A constructor explicitly defined by the programmer that accepts no parameters. It is commonly used to assign sensible baseline defaults.
+
+Java
+class Account {
+    int balance;
+
+    // Explicit no-argument constructor
+    Account() {
+        balance = 500; // default minimum balance
+    }
+}
+C. Parameterized Constructor
+A constructor that takes arguments to initialize fields with custom values at the time of instantiation.
+
+Java
+class Car {
+    String model;
+    int year;
+
+    // Parameterized constructor
+    Car(String m, int y) {
+        model = m;
+        year = y;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car1 = new Car("Tata Harrier", 2024);
+        System.out.println(car1.model + " - " + car1.year);
+    }
+}
+D. Copy Constructor
+Java does not have an automatic copy constructor like C++, but you can write one manually by passing an object of the same class to copy its state.
+
+Java
+class Point {
+    int x, y;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // User-defined copy constructor
+    Point(Point other) {
+        this.x = other.x;
+        this.y = other.y;
+    }
+}

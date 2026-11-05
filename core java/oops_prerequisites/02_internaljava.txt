@@ -1,0 +1,34 @@
+previously we told we need jdk
+
+when we type the code is we need to convert to byte code , so java code after compiling will be converted to byte code
+
+jvm - machine which run the code 
+jdk will complie and give the code to jvm
+
+
+see we have compiled the code and we need to execite the code now on jvm
+idea is to have jvm on every machine
+
+apart from the code which we have written we need some extra files which we need
+like extra libraries which will be given by jre
+
+
+jvm + jre = jdk
+
+java runtime environment
+in this jre will hep giving required things and jvm will finally run it
+
+jre is env and jvm is also inpart of jre
+so jvm + extra libraries is jre
+
+but as a developer we will download jdk means
+
+
+along with jdk we will get jre and jvm
+on a clinet machine we get jvm and jre which have extra files
+
+sometime if we install some software , we dont find beacuse software or app will be running on .net platform
+java execite
+
+if we dont have the updated jre , if we run it won t work
+

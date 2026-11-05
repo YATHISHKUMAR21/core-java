@@ -1,0 +1,28 @@
+see in home why do we cook in kitchen because we have all items necessary while cooking
+ingredients will be in the shelf extra also
+
+so similarly like food , to run java we need extra libraries at run time
+
+what if we need environment 
+
+layer is there between jvm and os
+that is jre
+
+file.java. //files
+|
+file.class.  //after compile . byte code so jvm can understand
+|
+jvm.  //it will run the code of byte code.  java virtual machine
+|
+jre // extra libraries we need so jvm can run , so we use jre to run -java runtime environment
+so jre = jvm + extra libraries
+|
+os
+|
+hardware
+
+
+jdk ( jre. (jvm. ))
+
+so java is called as wora ,one time write and other it will run in all machine
+write once and run anywhere

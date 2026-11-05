@@ -1,0 +1,24 @@
+what is internal in jvm and how code exactly at jvm
+
+at memory level , in jvm memory we can categorise in 2 parameters
+
+
+lifo stack
+when variables are created , it will be in stack memory
+apart from stack memory jvm will be having heap memory
+
+n1 , n2 are local variables
+we have num variables
+
+every method will have it own stacks
+
+main stack , we will be having the data
+
+
+if we write calc obj = new Calc();
+
+obj wll get in stack but what will be the value?
+it will be in heapp
+
+
+obj will have 2 sections

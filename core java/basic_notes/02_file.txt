@@ -1,0 +1,23 @@
+in java make the file name as filename.java
+extension download
+
+no camel case
+
+jshell 
+it will give you a prompt , it will allow you to calculate and etc stuff like that
+
+and if i want to print something we need methods in java
+if i want to do something we need methods
+
+if you want to print there should be something we need to add 
+jshell> print(6);
+|  Error:
+|  cannot find symbol
+|    symbol:   method print(int)
+|  print(6);
+|  ^---^
+
+so to print and all for now just write system.out.println(6) and string and all write in string
+in jshell
+
+but if it works in jshell , it will not build in .java file application

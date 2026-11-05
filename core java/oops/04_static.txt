@@ -1,0 +1,64 @@
+3. The static Keywordstatic denotes that a member belongs to the class itself rather than any specific instance. Static members are allocated memory once when the class is loaded by the JVM, and they are shared across all instances.Applications of staticUsagePurposeCalling SyntaxStatic VariableShared across all objects (e.g., counters, constants, common configs).ClassName.variableStatic MethodUtility or helper method; cannot access non-static instance variables or this.ClassName.method()Static BlockStatic initializer block executed once when the class is first loaded.Runs automatically before mainStatic Nested ClassInner class that does not require an enclosing outer class reference.Outer.Nested n = new Outer.Nested();Complete Working DemonstrationHere is a unified program combining constructors, constructor chaining with this, and static counters:Javaclass Book {
+    // Static variable: shared by all instances
+    static int bookCount = 0;
+
+    // Instance variables: unique to each object
+    String title;
+    double price;
+
+    // Static initialization block
+    static {
+        System.out.println("Book class loaded. Tracking inventory...\n");
+    }
+
+    // Default/no-arg constructor chaining to the parameterized one
+    Book() {
+        this("Untitled", 0.0); // calls Book(String, double)
+    }
+
+    // Parameterized constructor
+    Book(String title, double price) {
+        this.title = title; // 'this' resolves variable shadowing
+        this.price = price;
+        bookCount++;        // increments shared class-level counter
+    }
+
+    // Instance method
+    void printDetails() {
+        System.out.println("Title: " + this.title + " | Price: ₹" + this.price);
+    }
+
+    // Static utility method
+    static void displayTotalBooks() {
+        // Can access static members, but CANNOT access 'this.title' or 'price'
+        System.out.println("Total books registered: " + bookCount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // 1. Using parameterized constructor
+        Book b1 = new Book("Effective Java", 1250.0);
+        b1.printDetails();
+
+        // 2. Using no-arg constructor (which chains via this())
+        Book b2 = new Book();
+        b2.printDetails();
+
+        // 3. Another instance
+        Book b3 = new Book("Clean Code", 1400.0);
+        b3.printDetails();
+
+        System.out.println("-----------------------------------");
+
+        // 4. Invoking static method via Class name directly
+        Book.displayTotalBooks();
+    }
+}
+OutputPlaintextBook class loaded. Tracking inventory...
+
+Title: Effective Java | Price: ₹1250.0
+Title: Untitled | Price: ₹0.0
+Title: Clean Code | Price: ₹1400.0
+-----------------------------------
+Total books registered: 3

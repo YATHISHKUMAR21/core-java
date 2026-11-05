@@ -1,0 +1,45 @@
+after we write the code in java file , how to get it executed , when we run the application
+in a machine we will be having jvm
+
+in our machine or os , windows , linux etc it will have jvm
+if we have jvm then we can run java application
+
+
+
+os is working on hardware
+on top of os we have jvm - it job is to execute java code
+we dont write the code that works directly on os
+
+we know is java is platform independent means we can run java application on any hardware and 
+it can be run on any machine
+but it only needs is jvm ,
+
+but jvm itself is platform dependent means jvm cannot be done on macos
+then how are we saying like java is platform independent
+
+your application is independent but jvm is not
+jvm need to be build based on os
+
+
+jvm will say hey i will execute your code but not java code , but its byte code
+jvm needed byte code in 010101010 kind of code , but we cannot write this type because we are writing in java language
+
+so for that we have in middel called java compilers
+
+java --> compiler will turn code to byte code ->jvm 
+
+jvm will only run the one file , so we need to specify the first file and also that file need to have the main method
+
+the first file need to have main method, out of all the files , the execution starts with file which have main
+provide a main that have particular signature
+
+public static void main(string a[]){
+
+}
+our code will not work without this
+as a programmer we will create the java file 
+write java codecompile
+then compiler converts to byte code
+then code will be byte fule and run on jvm 
+
+once jvm see main syntax then only we get output

@@ -1,0 +1,56 @@
+public class Demo{
+    public static void main(Sting args[]){
+
+    }
+}
+
+
+main is the start of the execution , we are anyway using the method right
+car , mobile , software , we have wheels , bonet , dashboard executionsimilarly in software also
+
+in java we can tell component as classes
+see if we have wheel class that also will be having behaviour
+
+class Computer{
+    i can define the behaviour what computer can dashboard
+    playMusic(){
+
+    }
+}
+
+in method we need to define what access we are giving
+it will give something in return
+if i dont need anything i can tell it as void
+so whatever type we retun we need to add in the function
+
+so to get  pen , we need to give money
+
+getmepen( ) will give me integer value
+everytime we have class which is blue print or ideas to use that we need objects
+
+
+
+class Computer{
+    public void playMusic{
+        System.out.println("hey)
+    }
+
+    public void getMeAPen(int cost){
+        return "pen"
+    }
+}
+
+
+public class Demo{
+    public static void main(String args[]){
+
+        Computer obj = new Computer();
+
+
+        obj.playMusic();
+        String str = obj.getMeAPen(cost:10);
+
+    }
+}
+
+

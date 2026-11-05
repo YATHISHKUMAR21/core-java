@@ -1,0 +1,85 @@
+we have capsule where we can close and keep it private so no other can use it
+
+class Human {
+    int age;
+    String name;
+
+    so if i make 
+    private int age; -->this means this variable is only accessible in this class and not accessible by outside class
+    because i can use my data because its mine
+
+
+}
+
+class Demo {
+    psvm(a[]){
+        Human obj = new Human();
+        obj.age=11;
+        obj.name="ykr"
+
+        obj.age=11; //it says its not visible
+        everytime you create instnace variable make it private so no outside is using it
+
+        sop(obj.name). //just by using obj we can get any data but if we want to manage it to real world we cannot give all the 
+        details to public
+
+        we need to make the variable private
+
+    }
+}
+
+
+
+so in mind all the data will be stored in the form of boxes , like name is stored in one box, famous hero is in one box,
+similarly private things also store in some kind of box
+so yopu cannot share them.
+
+like office password data is in your mind , if someone want to check , they need to ask to you
+and its your decision whether to provide data to them or not
+
+
+but what if is the useif we make it private and no one can access that?
+variables are created to stroe values and to access them
+so private data can be only accesed via methods
+
+like if you want data you need to ask for it , and its my decision to say it or not
+so how can i restrict it make it private and only way to access them is methods
+
+
+class Human{
+
+    private int age =11;
+    private String name = "NAVIN";
+
+    public int getAge(){
+        return age;  // you can access because getage is defined in same class
+    }
+
+    public String getName(){
+        return name;
+    }
+
+
+}
+
+now if someone want to access the name and age , it says dont fetch directly because they are private you can access using the methods
+
+class Main{
+    psvm(){
+
+        Human obj =new Human();
+        obj.getName() and obj.getAge();
+
+
+    }
+}
+
+point to remember is variable is private
+
+
+now what if we need to set the value , for getting the data we have get , for setting the data we can say set
+
+public void setAge(int a){
+    age =a;
+}
+

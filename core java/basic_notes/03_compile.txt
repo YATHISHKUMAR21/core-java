@@ -1,0 +1,14 @@
+we need to compile after writing the code
+and make sure we are in a correct folder
+
+it will convert the java lang code to byte code to jvm to execute
+
+//so once u compile the .java file , we will get .class file created automatically
+//the extension for byte code is .class file
+//for java the extension is .java
+
+so to run we need to run the code , we need to use jvm 
+to run we need to use class name
+
+
+everytime you change the file , compile it and then only run

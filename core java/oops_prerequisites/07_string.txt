@@ -1,0 +1,77 @@
+if we want to store character stream like ykr , it is bunch of character
+
+
+we can create a char array or we can create string
+
+when we create string in java it need to be in double quote
+
+String name = "ykr";
+but whenever we work with class we create new object
+
+String name = new String();  //string object
+
+sop(name) //prints blank because its blank
+so in constructor we pass the string
+
+String name = new String("name");
+name.hashcode();
+name.charAt(0);
+
+now if we append something if we concagt something it will change acordingly
+but thatnot the case , we are not changing naveen to naveen reddy
+
+no , that not string works
+
+since strings are heavily used in java , same string are used multiple times
+String s1= "ykt"
+Sting s2 = "ykr"
+
+here if you think , s1 and s2 are 2 object no you are wrong
+sout s1 == s2 means they are same , the value for their address is same
+in heap we have speacial memory , inside heap we will be having speacial area called strinf constant pool
+
+
+string in java is constant pool
+so once intialised we cannot change that
+so first ykr is not there when written it will create ykr
+it check YKR , SO TYPo is differenet , it will again creat ykr
+strinf s2 is ykr , it will check in constant pool and it wont create the another string it reference the same thing
+
+
+so s2 will point to the same memory in heap
+so if we update naven + reddy , it is creating the new object which have data naveen reddy
+changing the address for the newly created object 
+
+but what about old memory?
+it will go to garbage memory
+
+mutable vs immutable string
+------------------------------
+by default string are immutable
+
+but what if we want string to be mutable
+insted of string you can used
+string buffer or string builder
+so here you can use mutable form
+
+
+string buffer
+StringBuffer sb = new StringBuffer();  sb will give sizr of 16 bytes or chars even though its empty
+and we can change this data
+it will stroe the name and give extra space of 16 bits
+
+lenght and capacity are differenet
+
+ykr - db len 03 , capacity 3+16=19
+
+if i want append and print ykr hero , it will mutate 
+
+
+you cannot convert string buffer to string cannot typecast
+
+but you can convert sb.To Sting
+
+sb vs string uilder
+
+sb is thread safe but not string builder
+whatever methods you have in string buffer you have in string builder

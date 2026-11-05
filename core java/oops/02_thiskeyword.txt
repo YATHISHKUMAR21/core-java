@@ -1,0 +1,34 @@
+2. The this Keyword
+this is a reference variable pointing directly to the current object whose method or constructor is currently executing.
+
+Primary Uses of this
+Resolving variable shadowing: Differentiates instance fields from constructor/method parameters when they share the same name.
+
+Constructor chaining (this(...)): Calls another constructor in the same class. Must always be the first line of the constructor.
+
+Passing the current instance: Can be passed as an argument in method calls or returned from a method (return this;).
+
+Java
+class Employee {
+    int id;
+    String name;
+    String department;
+
+    // Constructor 1: 2 parameters
+    Employee(int id, String name) {
+        // Constructor chaining: invokes Constructor 2
+        this(id, name, "Engineering"); 
+    }
+
+    // Constructor 2: 3 parameters
+    Employee(int id, String name, String department) {
+        // 'this.id' refers to the instance variable; 'id' refers to the local argument
+        this.id = id;
+        this.name = name;
+        this.department = department;
+    }
+
+    void display() {
+        System.out.println("ID: " + this.id + ", Name: " + this.name + ", Dept: " + this.department);
+    }
+}

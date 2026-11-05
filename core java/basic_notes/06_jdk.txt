@@ -1,0 +1,22 @@
+jre you will be installing on os ,
+os will be having jre which have jvm
+
+but as developer we need jdk , so if we iunstall jdk we have jvm and jre
+and in every version we will be having some extra things
+every new version will have minor updates but base will be same
+
+
+why we build softwares
+we solve real words problem using virtual , so we are replacing the real world
+we are working with data , so we need data and processing on data
+this data can be coming from user or may be
+we store data in db where we store the data , w
+
+we store the data in variable
+so box will have number 5 with some name
+
+num = 6.5
+marks = 8
+ these boxes are actualy called variable we are having the name to installing
+
+ 

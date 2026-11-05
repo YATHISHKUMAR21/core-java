@@ -1,0 +1,7 @@
+byte a=10;
+byte b=30;
+a*b will be 300 but it is going out of range
+
+byte * byte if it goes out of range means , java will promote it 
+
+int result = b*b;

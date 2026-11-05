@@ -1,0 +1,69 @@
+types
+-----
+int float double long
+char
+bool
+string
+...................
+at this point we have different points
+what if we want to cxhange type of variable , but we cannot
+so can we assign to the type
+
+byte b = 127 //max value
+int a =256
+
+now if i want to assign a to b, but i am assigning value of integer to byte but this is not possible
+but reverse will work
+
+why?
+type of integer is bigger , now since int have more size than byte , it will be like narrowing
+but reverse we can do because range of byte is small compared to int
+like you can small box can fit in big box
+but what if i need to 
+
+
+so lets put to examples
+
+byte b=2; //max =127
+now if i double
+byte b=257 ; error incompaticble types
+
+
+byte b= 127;
+int a = b;
+
+see you are doing javac and then java , so both commands can be run in 1 once
+java Hello.java
+
+int a = 12;
+byte k=a;
+
+even if a is 12 and it comes in range of byte it will not work because type of a is integrers
+we cannot change to byte
+so we need to cast it with byte
+
+byte k = byte(a);  12
+this came 12 because it is small and its in range
+but what if it is in bigger range like out of range
+b=257 , it will do the modulus operation
+
+int a=257;
+byte b = (byte) a;  it will do modulus with b/range 257/256
+ans will be 1
+
+..................................
+
+float f = 5.6f;  if not f it will assume like double;
+int t = f;  //error invalid data type or loss of value
+we can put casting again
+
+int t=(int) f;
+so point will go and ans will be 5
+
+
+//type conversion - automatic thing like smaller in bigger box
+
+
+
+
+

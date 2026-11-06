@@ -62,3 +62,13 @@ Title: Untitled | Price: ₹0.0
 Title: Clean Code | Price: ₹1400.0
 -----------------------------------
 Total books registered: 3
+
+
+static variable will be shared by objects , if we change the variable of this it will change all the other things
+so you can simply call the static variable with the class name
+you can call it using object name , but avoid it
+
+static variables are shared by different way 
+
+in non static methods you can share static variables, you are making something as class member not as object memory
+here u are saving memory as well

@@ -1,0 +1,90 @@
+whenever you are using non static method ,
+you need to create an object of it , because if you have to call , u need it to do via object
+
+class Mobile{
+    String brand;
+    int price;
+    static String name;
+
+    public void show(){
+        sop(brand price name)
+    }
+
+    public static void show1(Mobile obj){
+        sop(static method)
+        sop(brand price name);
+    }
+
+
+}
+
+public class demo{
+    psvm{
+        Mobile obj1 = new Mobile();
+        obj1.brand="apple"
+        obj1.price = 1500;
+        Mobile.name ="smartphone". //static variable 
+
+        Mobile obj2= new Mobile();
+        obj2.brand = "samsung"
+        obj.price = 1200
+        Mobile.name = "smartPhone";
+
+
+        obj1.show();
+        obj2.show();
+
+        Mobile.show(); error could not make static reference to non static method
+        so you cannot call non static method from class name
+
+        but you can call static method directly with the help of class name
+        Monile.obj1;
+
+        static var in static mehtod
+        when we call mobile.show1 , how do we know which object are we referring to
+        lets not have static 
+
+        so instead do this Mobile.show1(obj) //passing the object
+        so we cannot directly use non static variable inside static method
+        using the obj reference you can do
+
+
+
+    }
+}
+
+
+why main method is static?
+
+if you dont mention main will be non static
+so to call main , we need to create the obj of file name
+since we know main is the starting point for the execution , if demo or filename class is not executed
+how will it create the object
+
+so using static , we say like to call main we dont need object of main
+//////incrementing the thingss
+
+
+
+class Mobile{
+    //instance variable
+    String brand;
+    int price;
+    
+    //static variable
+
+    static String name;
+    public void show(){
+        sop(brand name price);
+    }
+}
+
+public class demo{
+    psvm{
+        Mobile obj1 = new Mobile();
+        obj1.name= apple
+        obj1.price = 212
+        Mobile name = "smart phone"
+
+    }
+}

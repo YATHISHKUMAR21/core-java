@@ -1,0 +1,47 @@
+class A{
+    public void show(){
+        sop(in  a show)
+    }
+
+     public void config(){
+        sop(in  a config)
+    }
+
+
+
+
+}
+
+class B extends A{
+
+    public void show(){
+        sop(in b show)
+    }
+}
+
+public class Demo{
+    psvm(){
+        A obj = new A();
+        obj.show();
+
+        part 2
+        -------
+
+        B obj = new B();
+        obj.show();
+        obj.config();
+
+
+        part 3
+        ======
+        obj>show() now i want to call the show of the b class instead of a class
+        write same method
+        public void show(){
+            sop(in b)
+        }
+    so it will override the parent class
+
+    }
+}
+
+same name , same type of parameters , same number of parameters

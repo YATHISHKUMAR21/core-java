@@ -1,0 +1,61 @@
+public 
+---------
+same package no need to mention public
+if it i need to access something outside of the package , it should be declared as public
+
+public means it can be accessed from anywhere
+
+
+----------------------------
+
+private
+- accessed from same class , but not accessible from outside the class
+so same package also if it private i cannot access
+
+private can be only used from same class
+
+
+================================
+so if i dont mention anything like privqte or public
+what will uit be 
+
+default - it can be acccessed from same package (private protexted)
+
+
+===================================
+protected
+
+if there is variable with protected in one package
+in differnet package , i extend the clas of that 
+can i use?
+
+if you make it protected you cannot access in other packages
+but there is one way you can access in different package , that is using it as child class
+
+
+decision.     private.     protected.    public    default
+
+1.same class.   yes.         yes.            yes.     yes
+2.same package
+  subclass.      no.           yes.           yes.    yes
+
+3.samepackage
+    no subclass.  no.           no.           yes.      yes
+
+4.different package
+subclass            no            yes.          yes.       no
+
+5.diff package
+no subclass            no           no           yes        no
+
+
+
+
+try to make the class as public
+standards is you should not have 2 public class in 1 file
+
+and most cases you need to have one class in one file
+
+1.try to make class public
+2.try to make instance variable private
+3.method mostly public , if only in subclass protected , dont use that much default in mehtods

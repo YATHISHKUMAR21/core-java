@@ -70,7 +70,31 @@ class Mobile{
     //instance variable
     String brand;
     int price;
-    
+
+
+    //see the constructor if we initialise something , whenever the new object gets created
+    the constructor will get called each time so since name is static and its common for all the object
+    why it needs to be called at each and every time in constructor
+
+    //so the static field name will be initialised only once , to achieve that we have
+    speacial block called static block
+
+    static{
+        name = "phone"
+        sop(scjsbd)
+    }
+
+    the speciality of static is , it will be called only once irrespective of how many
+    objects are being created
+
+    so if 100 objects are created , constructor will get called 100 time ad static block will be called only once
+
+    public Mobile(){
+        brand = ""
+        price = 200;
+        name = "phone" //remove and dont add the static 
+    }
+
     //static variable
 
     static String name;
@@ -86,5 +110,31 @@ public class demo{
         obj1.price = 212
         Mobile name = "smart phone"
 
+    }
+}
+
+with there are 2 words
+objects created in 2 steps
+1.class loads
+2.object then wil get initialised
+
+in jvm we have class loader , class will get loaded from library to class loader
+obj creation it will load the class first
+everytime it loads the class load it will call static block
+so after static block will be called first.
+
+if you dont create the object then it will not load the class as well
+but what if i want to do i need to laod the class
+
+there is speacial class for it
+
+class class Demo{
+    psvm(){
+        Class.forName(className:Mobile);         //forname is the method which loads the class
+        so it will not create the object but it will instantiate the class
+        in new static block
+        this is how we load the class
+
+        there are some situation where we use this like jdbc , like how to initialise STATIC bLOCKS
     }
 }

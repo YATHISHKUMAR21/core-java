@@ -1,0 +1,47 @@
+is and has
+
+computer can be laptop , dekspto , mobile phoen
+
+comuter is itself is abstract
+if we talk about desktop , it will certain parts like mother board etc
+desktop has mother board computer
+
+let us focus on is mainly
+
+
+laptop is computer
+laptop got it feature from computer
+
+forturner is a car
+
+we are referncing the real words with the other upper model
+
+like parents property is your property 
+like inheritance
+
+class Calculator{
+
+    variables
+    sdwnjdwjkednwkjd
+    methods
+    //add 
+    //sub
+    //multi
+    //division
+}
+
+what if i need some advanced calculator ,
+now we have 2 option we can edit the existing one
+or 
+enhance the previous clas keeping all the old and on top extra feautures
+
+so no need of defining again the old feautures
+so the child class will inherit
+
+parent ->child
+super->sub class
+base class->derived class
+
+class Advanced extends Calculator{
+    
+}

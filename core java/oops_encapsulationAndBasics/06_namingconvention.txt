@@ -1,0 +1,30 @@
+camelcasing
+
+whenever clas name and interface
+---------------------------------
+
+it should start with captil. Caclculator
+
+variables - start with small and other words shoul be with camelcase
+
+we have concpet of constant it will be capital
+
+
+
+A obj = new A();
+obj.show();
+
+101 will refer to the obj so it will call obj.show();
+obj is reference variable ,because it is referring to the obect.
+
+is there short cut to wirte 
+new A() --->object creation in heap with the method in that class , but not variables creation happens at this time
+we are just creating object like empty in heap and nothing in stack
+
+new A(); anonymous object
+anonymous object dont have reference
+the only problem with this you can only call once 
+
+new A().show() you can use it once but you cant reuse this once more
+
+new A() everytime we create , we are creating new object

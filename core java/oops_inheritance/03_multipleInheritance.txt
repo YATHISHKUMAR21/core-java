@@ -1,0 +1,39 @@
+a.  b.
+   c 
+
+   is it possible in java that c will get inherit from both parent a and b
+
+   class c extends a and b , it wont work
+
+   multiple inheritance in java will not work in java , it works in c++
+
+
+   why?
+   in multilayer inheritance
+  we create the obj of b , means it can call the mehtod of a and also b
+
+  how it will do , first it will check in b class if not it goes to a ,
+  same goes with c , it will check in c , if not go to b , if no go to a 
+
+
+  a
+  |
+  b multi level
+  |
+  c  
+
+  but in multiple
+
+  a.  b
+     c. 
+
+     we have method called show in a() and in obj it will do like this
+
+     first in c it will check if not found it will go a , yes then it is present
+
+     now what if there is function called y() present in both a and b 
+     now from which class it will take?
+     this problem is called ambuiguity
+
+     in java they removed the multiple inheritance feature itself
+     in java it wont work

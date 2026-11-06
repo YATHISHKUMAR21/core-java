@@ -1,0 +1,189 @@
+Class A{
+    public A(){
+
+    }
+
+}
+
+class B extends A{
+    public B(){
+        sop(in b)
+    }
+}
+
+class Demo{
+    psvm(){
+        B obj = new B();
+    }
+}
+
+here are instantianting the b obj , so everytime the obj gets created it will call the construcor of that
+particular class
+op
+in B
+
+the twist here is
+/////////////////////////
+what if construcor is present in a also
+
+Class A{
+    public A(){
+        sop(in a)
+    }
+
+}
+
+class B extends A{
+    public B(){
+        sop(in b)
+    }
+}
+
+class Demo{
+    psvm(){
+        B obj = new B();
+    }
+}
+
+output
+=========. here it is also calling the constructor of a
+in a 
+in b 
+
+whenever you create the objet of class , it will call the constructor of subclass and superclass both
+
+//////////////twist adding parameterised constructor
+lass A{
+    public A(){
+        sop(in a)
+    }
+
+}
+
+class B extends A{
+    public B(){
+        sop(in b)
+    }
+    public B(int n){
+        sop(in int b)
+    }
+}
+
+class Demo{
+    psvm(){
+        B obj = new B();
+    }
+}
+
+
+op-=====in A in B
+
+why not in int b?
+because we are not passing the values
+like when we follow 5 in 
+B ob = new B(5);
+
+in A
+in B
+in int 
+
+
+//////////////////parameterised constructor in both a and b
+
+class A{
+    public A(){
+        sop(in a)
+    }
+    public A(int a){
+        sop(int int a)
+    }
+
+}
+
+class B extends A{
+    public B(){
+        sop(in b)
+    }
+    public B(int n){
+        sop(in int b)
+    }
+}
+
+class Demo{
+    psvm(){
+        B obj = new B();
+    }
+}
+
+op====
+int a
+in int b
+
+here it not calling its default construcor , it is calling the parent constructor defaut 
+
+why?
+because every default constructor in java has a method called super even if we dont create
+john cena , like even thought it is not there m it is there
+
+
+every constructor will have super method
+class A{
+    public A(){
+        super()
+        sop(in a)
+    }
+    public A(int a){
+        super()
+        sop(int int a)
+    }
+
+}
+
+class B extends A{
+    public B(){
+        super()
+        sop(in b)
+    }
+    public B(int n){
+        super()
+        sop(in int b)
+    }
+}
+
+class Demo{
+    psvm(){
+        B obj = new B(n:5);
+    }
+}
+
+so when the constructor is called first it will executre super(
+
+    super means call the construcor of super class
+    the default one
+
+)
+so in that also if we dont want like this and particularly we need
+to pass the parameterised means in super keyword please pass the parameterised
+
+note:
+
+ok suppose there is one class or parent class
+according to java every class will have its own default construcor and in that super will be there
+
+if super is in child means it will call the parent class
+but what if its in parent class
+it will also have the super keyword right , where will it go?
+
+
+so in java there is a concept
+
+every class will extends the object class
+public class A extends Object {
+
+}
+
+even if we dont mention , object class will be the parents class
+
+so class A extends object means if a constructor have suoer it is referencing to the 
+constructor of object class
+

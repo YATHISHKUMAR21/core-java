@@ -1,0 +1,31 @@
+now the output i want is 
+
+i want to execute botht he construcor of b (child class)
+i want only 1 object , with 1 object i need to execute both construcor of b
+
+class B extends A{
+    public B(){
+        super();
+        sop(in b)
+    }
+    public B(int n){
+        this();  //////here this will comes
+        //super();  //this suoer will call the default constructor of parent class a
+        sop(int b)
+
+    }
+
+}
+
+this will execute the constructor for same class
+
+
+class demo{
+    psvm(){
+        with 1 obj we need both
+        
+    }
+}
+
+this method executes the construcor of same class
+super method execute the construcor of the upper class

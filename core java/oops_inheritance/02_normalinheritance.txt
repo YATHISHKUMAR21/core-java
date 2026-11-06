@@ -1,0 +1,22 @@
+class Calc{
+    public int add(int a, int b){
+        return a+b;
+    }
+
+    public int sub(int a, int b){
+        return a-b;
+    }
+}
+
+now why do we need inheritance?
+1.what if i need to add extra feautures, lets say if someone asking more feautues , addition sub , multi , division
+i can create the new class extending from the base class
+
+for inheritanc you need a class file not a java file
+//multilevel inheritance 
+
+c
+|
+b
+|
+a

@@ -1,0 +1,59 @@
+whenevr you have file we put them in folder and create the folder structure
+
+in java project we will have be multiple files 
+
+instead of creating the folder we can do like this
+
+above the clas of top of file
+
+write 
+
+package tools; it will automaticaly create the folder tools and move inside tht
+
+
+so you want to package or make folder like related to db , you can put all those class in that
+
+
+now to access the other package files outside the folder or different folder, it wont work because
+we cannot accesss it , 
+
+so we need to import calc
+
+import tools.calc;
+import tools.advcalc;
+
+
+so like this whichever class we need to use , we need to import accordingly
+
+like this java also have different packages in itself
+
+like suppost list
+
+ArrayList l = new ArrayList();
+
+we need to import ArrayList(),
+it is in import java.util.ArrayList
+
+java folder -> inside util folder ->inside ArrayList
+
+so whatever class we use in java belong to some package
+```
+
+and then how when we wirte sop system we never imprted anything 
+system beling to package java.lang
+
+so it is by default mentioned
+java.lang.*;
+so if it is nested means , it wont consider folder
+so you need to go till the folders 
+
+other.* wont work
+other.tools.* this will work
+
+
+so sometime we create the package and share to world
+it should be unique
+
+mvn repository
+----------------
+package com.google.claculish

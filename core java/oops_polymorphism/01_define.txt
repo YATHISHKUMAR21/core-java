@@ -1,0 +1,23 @@
+polymorophism
+
+poly means many
+morphism means behaviour
+
+behave differently ar different situation
+like home behaviour different
+like office behave different
+
+your name and behaviour changes
+
+
+same obj will have different reference 
+same reference will have diff behaviour
+
+types of polymorophism
+1.compile time polymorophism (early binding). //defined at compile time //overloading is part of compile time
+2.run time polymorophism (late binding).  //define at run time. //overriding is part of run time
+
+dynamic method dispatch
+
+polymorophism means behaviour will change based on situation
+at compile time -early polymorophism

@@ -1,0 +1,93 @@
+to implemet run time poly will define another example
+--------------------------------------------------------
+class A{
+    public void show(){
+        sop(in show)
+    }
+
+}
+
+class B extends A{
+
+}
+
+class C extends A{
+
+}
+
+public class Demo{
+    public static void main(String args){
+        B obj = new B();
+        obj.show()
+    }
+}
+
+
+can i create object of A referenning B
+A obj =new B();  since b is child of A
+what is type of obj , it is A but its implemetetation is b
+
+
+class Computer {
+
+}
+class Laptop extends Computer{
+    if i want to 
+}
+
+class Demo{
+    psvm(){
+        Laptop lap = new Laptop();
+        Computer lap = new Laptop();
+
+        lap is an object referring to computer but it is technically Laptop
+        type can be taken as parent , but the object is of child
+        referrence 
+        here left side you can take the reference of parent class and object of child class
+
+        A obj = new B();
+        obj.show() //in a
+
+
+
+        but the twist is 
+        what if same method is also present in b also , now what it will call
+
+        as per method riding it should call b show();
+
+    }
+}
+
+A obj = new A();
+obj.show(). here it will create the object of a obj 101 in stack referencew and actual heap it is in 101
+obj.show() this wil call the object of a 
+
+in a show
+
+
+obj = new B();  assign the object to old variable
+here we are changing the reference of obj to b in heap 103 and reference in stck is also changed
+in stack it will be 103
+
+now obj.show() it will be showing show of b class
+
+
+class C extends A{
+    public void show(){
+
+    }
+}
+
+obj = new C();
+obj.show()//it will refer to the c show
+
+so same object while compile we will not be n=knowing which method it will call
+while running only we will be knowing
+
+
+irrespective of type A , b c whichever object you create
+it depends upon what object you have a(), b()
+
+it is only possible if there is inhertiance
+
+onkly you can have child class for parent variable

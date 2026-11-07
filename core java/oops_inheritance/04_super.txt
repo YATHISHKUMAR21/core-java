@@ -108,7 +108,6 @@ class B extends A{
         sop(in int b)
     }
 }
-
 class Demo{
     psvm(){
         B obj = new B();

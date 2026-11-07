@@ -1,0 +1,47 @@
+wrapper class
+collection is similar to array , we need to add object type
+
+in java , for every primitive type we are going to have class for it
+int - INTEGER class
+char - character class
+
+for every primitive tyoe we have class for it
+
+we have int num =7
+how can i store it in the form of class
+
+Integer num1 =7;
+Ineteger num1= new Integer(value:8);
+sop(num1) //8
+
+Integer num1 = 8;
+
+Integer num1 = new Integer(num)
+here we are doing like storing the primitive value in the object
+this concept is autoboxung
+
+
+we are taking java primituvevalue and box it in the object
+Integer num1 =num;
+num is primnitive int
+num1 is class object
+so num is converted automatically ito object
+
+
+int num2=num1.getValue();
+
+here num1 is object we did using autobozing
+
+now intvalue will retrieve the primitive value form object
+
+
+whenever you see line ide , means it is deperecated
+
+
+String str = "12"
+str*2 wont work
+
+now we can take this as Integer
+int num3 = Integer.parseInt(str);
+num3*2
+

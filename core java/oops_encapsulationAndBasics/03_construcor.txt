@@ -24,7 +24,8 @@ public class Main {
     }
 }
 B. No-Argument Constructor (User-Defined)
-A constructor explicitly defined by the programmer that accepts no parameters. It is commonly used to assign sensible baseline defaults.
+A constructor explicitly defined by the programmer that accepts no parameters.
+ It is commonly used to assign sensible baseline defaults.
 
 Java
 class Account {
@@ -57,7 +58,8 @@ public class Main {
     }
 }
 D. Copy Constructor
-Java does not have an automatic copy constructor like C++, but you can write one manually by passing an object of the same class to copy its state.
+Java does not have an automatic copy constructor like C++, 
+but you can write one manually by passing an object of the same class to copy its state.
 
 Java
 class Point {

@@ -62,7 +62,8 @@ class Human{
 
 }
 
-now if someone want to access the name and age , it says dont fetch directly because they are private you can access using the methods
+now if someone want to access the name and age , 
+it says dont fetch directly because they are private you can access using the methods
 
 class Main{
     psvm(){

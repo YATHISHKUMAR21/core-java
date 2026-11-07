@@ -1,0 +1,45 @@
+  class A{
+
+  }
+
+  class demo{
+    psvm{
+        A obj = new A();
+        obj. can call so many method
+
+
+    }
+  }
+
+  earlier we talked about the in java class will extedns from object class
+  class Laptop{
+     int price;
+    string model;
+
+    public String toString(){
+        return hey
+    }
+    
+  }
+
+  psvm(){
+    obj.price=1232
+    obj.model="sdnsdf"
+
+    sop(obj.tostring())
+  }
+
+  so since it will check the class method if not it will go and check in parent method
+  
+  it will print some random charater with variable
+  everytime you try to print the object it will call the tostring object
+  it converts the number into hexadecimal string
+  and its number is hashcode
+
+  behind the scene implemetetation of hashcode works with the hash based on the values you have
+  in jaba whatever the object class method are there , work with those itslf
+
+
+  so right click source action generate  equals hashcodes
+
+  

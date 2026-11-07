@@ -1,0 +1,78 @@
+final - can be used with class , variable , method 
+
+
+fian with variable
+int num =8;
+you can change the value later and ereassign
+
+there is a concept of making constants
+if you make constant you cant make it vary or change
+
+in java  we say it as final variable
+so if we assign the variable as final it will be like constant and we cannot modify it
+final int num =8;
+
+
+
+final class
+--------------------
+
+final class Calc{
+
+    public void shwo(){
+        in calc class show func
+    }
+    public void add(int a , int b){
+        sop(a+b);
+    }
+}
+
+class AdvCalc extends Calc{
+
+}/.noit able to create class subclass 
+
+hey if i want like my class should not be inherited to subclass at this situation we need to add class
+public class demo{
+    psvm(){
+
+        Calc obj = new Calc()
+        obj.show
+        obj.add(2,3)
+    }
+}
+
+
+---------
+
+so variable if i add final , it will be constant
+if final added to class , its child class cannot be created
+
+
+----------------------------
+class Calc{
+
+    final public void shwo(){
+        in calc class show func
+    }
+    if i dont want my method to override in subclass or child class i need to add the final keyword to the method
+    public void add(int a , int b){
+        sop(a+b);
+    }
+}
+
+class AdvCalc extends Calc{
+
+    public void add(int a , int b)
+
+}
+public class demo{
+    psvm(){
+
+        Calc obj = new Calc()
+        obj.show
+        obj.add(2,3)
+    }
+}
+
+op - in class a func show
+

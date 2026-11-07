@@ -1,0 +1,63 @@
+
+
+double d =4.5;
+
+sop(d)
+
+what if i want to save this value somewere
+
+double d = 4.5
+int d; //it wont happen because doubke is big box
+
+type mismatch cannot convert you might miss data
+if you say ok
+
+int i = (int) d ; you wil lose .5
+
+this is called typecasting
+
+in oops
+----------------
+
+class A{
+show1(){
+in a
+}
+}
+
+class B extends A{
+show2(){
+in b
+}
+}
+
+psvm(){
+    class A = new A();
+    obj.show2() //it wont execute you cannot access the child methods, because parent does not know about b
+    obj.show1() // a show1
+    
+    reference of A and object of B
+    A obj = new B();
+
+    tyoe casting
+    A obj = (A) new B();
+
+    we are referring to parent for child class - upcasting
+
+    obj,show1(). in a show
+
+    A obj = new B(); 
+    obj.show2() even if this object of b i cannot access method of class b show2
+    because reference is of A AND IT DONT HAVE IDEA OF b
+
+    A obj = new B();
+    obj.show1();
+
+    B obj1 = (B) obj;
+    obj1.show2();
+
+
+
+    
+}
+

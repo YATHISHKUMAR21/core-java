@@ -1,0 +1,137 @@
+wen you join companu you need the laptop to work right
+
+so they give you a laptop
+
+
+
+
+
+class Developer{
+
+    public void devApp(){
+        sop(coding)
+    }
+} 
+public class Demo{
+    psvm(){
+        Developer navin = new Developer();
+        navin.devApp();
+    }
+}
+------------------
+
+so developer ask give me a laptop , basically we need to accept laptop object
+we pass laptop lap and pass and then call lap.code
+
+when you ask developer to write a code , he will ask to give laptop 
+we need to creayt the obj of laptop and ofcourse every developer needs it own object of laptop
+
+
+
+
+class Laptop{
+        public void code(){
+        sop(code,compile,run)
+    }
+}
+
+class Developer{
+
+    public void devApp(Laptop lap){
+        lap.code()
+    }
+} 
+public class Demo{
+    psvm(){
+
+        Laptop lap = new Laptop();
+        Developer navin = new Developer();
+        navin.devApp(lap);  //code compile run
+        from main method we are calling devappa dnthen passing the lap object andacceptiing that lap
+        we are calling code method
+    }
+}
+
+''''''''''''''''''''''''''''''''''''''
+hey do we reallly need lap , why as a developer you are asking laptop
+what if companu give computer or desktop
+
+class Laptop{
+        public void code(){
+        sop(code,compile,run)
+    }
+}
+class desktop{
+    public void(){
+        sop(faster)
+    }
+}
+
+class Developer{
+
+    public void devApp(Laptop lap){
+        lap.code()
+    }
+} 
+public class Demo{
+    psvm(){
+
+            Laptop lap = new Laptop();
+            desktop desk = new Desktop();
+            Developer navin = new Developer();
+            navin.devApp(desk)
+
+            now developer navin say it is not possible because he accepts only laptop object
+            so how do we solve that?
+
+    }
+}
+
+
+that is why when we make application it shoulf be flexible
+
+here developer is dependent on computer which is laptop , desktop ,
+to imporve this we need to create class called computer
+
+class Computer{
+    public void code(){
+
+    }
+}
+
+class Laptop extends Computer{
+    public void code(){
+
+    }
+}
+
+class Desktop extends Computer{
+    public void code(){
+
+    }
+}
+
+psvm(){
+    computer lap = new Laptop();
+    reference of parent class and obj of sub class
+
+    computer desk = new desktop();
+    Developer dev = new Developer()
+
+    dev.devApp(desk);
+    dev.devApp(lap);
+
+    it will work for both 
+}
+
+
+to make it loosely coupled
+abstract class Comp{
+    pubic abstract void code(){
+
+    }
+}
+
+we can use interace also
+
+

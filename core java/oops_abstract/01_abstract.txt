@@ -1,0 +1,70 @@
+see if we buy the car there is no necessity to understand the functionality
+i know hoiw to play music , i doint know how toi setuo engine to drive
+i dont know how to implement drive functionality
+
+so my question is if we dont know how to implement, why we need to create the car class
+so since you know how to playmusic and not know drive,
+can we remove the drive method
+
+so if you dont know the implementation you can just declare it
+
+abstract class Car{
+    public void drive(){
+
+    }
+
+    public abstract void drive();
+    why are you declaring it when not defining it
+    i am just giving you a abstaract since i dont know how to implement it
+
+    abstract method can only be in the abstract class so add in class name also
+    public void playMusic(){
+        sop("play music");
+    }
+
+
+}
+
+i want wagonr to implement the drive functionality
+so we dont buy a car , we buy a different brand which have all the necessary functionality
+
+
+so if you are inheritng abstract class yoi need to define it
+`````````````
+Class wagonR extends Car{
+
+    public void Drive(){
+        sop(driving)
+    }
+    
+
+}
+
+public class Demo{
+    psvm(){
+        Car obj = new Car();
+        obj.drive();
+        obj.playMusic();  //i am qb  
+
+
+
+        Car obj = new WagonR();
+        obj,drive() call drive of wagonr
+
+    }
+}
+
+
+
+so we know if abstaract methoid is there class should be abstract
+but
+if we have abstract class we can have bith normqal methods and abstract methods
+
+so if we define abstracy method , we need to impleement it in child class
+what if we dont do that?
+in this case the child class also become abstract class 
+
+and you cannot create the object of abstract class
+//concrete class
+
+we cannot create object of abstract class we need to create subclass and then implement the method of deined in parameterized

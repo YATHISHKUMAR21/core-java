@@ -1,0 +1,53 @@
+class A{
+    public void show(){
+        sop(in show)
+    }
+}
+
+
+A obj = new A();
+obj.show()
+
+
+
+what if i want to change the behaviour
+
+class B extend A{
+    public void show(){
+        sop in b show
+    }
+}
+
+A obj = new B();
+obj.show();
+
+
+op- 
+in b show
+
+here the purpose of b was to do method overriding , what if we say this will be used for only once
+
+
+
+so now instead of this we can do like 
+i want to create the obj of a 
+
+A obj = new a{
+    public void show(){
+        sop(in new show)
+    }
+}
+obj.show ()
+ it will go to the class in new show this is iunner class
+
+ anonuympus
+ class inside the demo
+
+ since we dont have name in file it will be like
+ Demo$1.class
+
+ A obj = new A() and then open curly braces{
+    p v show()
+ }
+
+ obj.show();

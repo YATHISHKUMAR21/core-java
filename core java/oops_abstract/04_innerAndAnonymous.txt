@@ -1,0 +1,64 @@
+abstract class A{
+    public abstract void show();
+}
+
+class B extends A{
+    @Override
+    public void show(){
+        sop("in B show")
+    }
+}
+
+obj.show() ---in b show()
+
+---------------
+here we see the only functionality of b class is function Override
+so will do the inner class
+
+
+
+abstract class A{
+    public abstract void show(){
+
+   } 
+}
+
+psvm(){
+    A obj = new A()
+    {
+        public void show(){
+            sop(in a show inner)
+        }
+    };
+
+    providing the implementation of abstract class using inner class
+    but we cannot do the object of abstract class right
+
+    we cannot create abstract class object
+    that is obj of inner class
+    we can use inner anonymous class of abstraact 
+
+
+
+    obj.show()
+}
+
+--------
+
+abstract class A{
+    public abstract void show();
+    public abstraact void config();
+}
+
+psvm(){
+    A obj = new A()
+    {
+        public void show(){
+            sop(in a show inner)
+        }
+
+        public void Config(){
+            in new config
+        }
+    };
+}

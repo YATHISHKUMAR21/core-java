@@ -1,0 +1,43 @@
+before writing interface lets discuss on abstract
+
+abstract class A{
+    we can create normal and abstract methods in abstract class
+    suppose we have only abstract methods
+
+    abstract void show();
+    public abstract void config();
+}
+
+we have another wauy of doing it 
+
+so when we have abstract class with only abstract methods we have another way of doing it
+so at this case you can use interface
+
+
+interface A{
+    void show();  this means public abstract is there 
+    void config();  this means public abtract is there
+
+}
+
+Interface A{
+    void show();
+    void config();
+
+}
+
+how do i instantiate
+
+A obj; here interface A is type
+
+if you create object of A it will throw error
+
+cannot instantiate the type a 
+
+------------
+why do we need it?
+
+during design , like i am giving you the design and you have to take the walk
+i just tell what are the methods i need , and you need to implement
+
+

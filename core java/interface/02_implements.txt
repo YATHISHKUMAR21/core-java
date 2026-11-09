@@ -1,0 +1,31 @@
+interface A{
+    void show();
+    void config();
+
+
+}
+
+class B implements A{
+    public void show(){
+        sop(in show);
+    }
+    public void config(){
+        sop(in config);
+    }
+}
+
+so psvm{
+
+    you cannot create the obj of A interface but you can create the object of b 
+    A obj;
+    obj = new B();
+
+    obj.show();
+    obj.config();
+}
+
+if you do implement then you should add the implement of all the methods which in Interface
+if you fail your class will become abstract automaticllu
+
+
+

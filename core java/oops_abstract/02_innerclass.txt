@@ -1,0 +1,51 @@
+inner class
+
+class withing the class
+
+class A{
+    int age;
+    public void show(){
+        sop(in show)
+    }
+    class B{
+        public void config(){
+            sop in config
+        }
+
+    }
+}
+
+
+psvm(){
+    A obj = new A();
+    obj.show();
+
+    how to call the config
+    B obj1 = new B();
+    errpr- it cannot resolve B b cannot be resolved
+    because b is not openly available since its inside a
+
+    if you want to refer
+
+    A$B means b belongs to A class
+    A.b
+    there is no problem in declaring variable , cannot able to resolve B
+
+    A.B obj1 = obj.new B();
+
+    why?
+    because if we want the object of class B
+    we need the obj B
+    A.B obj1 = obj.new A();
+
+
+    if we want to create the object of inner class we need the outer class reference also
+    A.B and object of outer class obj1 = obj.new B();
+
+    we need the obj of outer class to create the inner class
+}
+
+imagine class having variabke method , class also
+
+if inner class is static it will work , we cannot add static for outside class
+

@@ -1,5 +1,7 @@
 1. Constructors in Java
-A constructor is a special block of code called automatically when an object is created using the new keyword. Its primary job is to initialize the newly created object's state (instance variables).
+A constructor is a special block of code called automatically 
+when an object is created using the new keyword.
+ Its primary job is to initialize the newly created object's state (instance variables).
 
 Key Rules of Constructors
 Name must be identical to the class name.
@@ -10,7 +12,8 @@ Cannot be abstract, static, final, or synchronized.
 
 Types of Constructors
 A. Default Constructor
-If you do not define any constructor in a class, the Java compiler automatically inserts a public, no-argument constructor with an empty body (super();).
+If you do not define any constructor in a class, 
+the Java compiler automatically inserts a public, no-argument constructor with an empty body (super();).
 
 Java
 class Student {

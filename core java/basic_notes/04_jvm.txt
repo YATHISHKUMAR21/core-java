@@ -22,7 +22,8 @@ jvm need to be build based on os
 
 
 jvm will say hey i will execute your code but not java code , but its byte code
-jvm needed byte code in 010101010 kind of code , but we cannot write this type because we are writing in java language
+jvm needed byte code in 010101010 kind of code , but we cannot write this type 
+because we are writing in java language
 
 so for that we have in middel called java compilers
 

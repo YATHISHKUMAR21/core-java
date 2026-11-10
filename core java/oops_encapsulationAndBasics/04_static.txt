@@ -1,4 +1,15 @@
-3. The static Keywordstatic denotes that a member belongs to the class itself rather than any specific instance. Static members are allocated memory once when the class is loaded by the JVM, and they are shared across all instances.Applications of staticUsagePurposeCalling SyntaxStatic VariableShared across all objects (e.g., counters, constants, common configs).ClassName.variableStatic MethodUtility or helper method; cannot access non-static instance variables or this.ClassName.method()Static BlockStatic initializer block executed once when the class is first loaded.Runs automatically before mainStatic Nested ClassInner class that does not require an enclosing outer class reference.Outer.Nested n = new Outer.Nested();Complete Working DemonstrationHere is a unified program combining constructors, constructor chaining with this, and static counters:Javaclass Book {
+3. The static Keywordstatic denotes that a member belongs to the class itself rather than any specific instance.
+ Static members are allocated memory once when the class is loaded by the JVM,
+  and they are shared across all instances.
+  Applications of staticUsagePurposeCalling SyntaxStatic VariableShared across all objects 
+  (e.g., counters, constants, common configs).ClassName.variableStatic MethodUtility or helper method;
+   cannot access non-static instance variables or this.ClassName.method()Static BlockStatic initializer 
+   block executed once when the class is first loaded.
+   Runs automatically before mainStatic Nested ClassInner class that does not require an 
+   enclosing outer class reference.Outer.Nested n = new Outer.Nested();
+   Complete Working DemonstrationHere is a unified program combining constructors, 
+   constructor chaining with this, and static counters:
+   Javaclass Book {
     // Static variable: shared by all instances
     static int bookCount = 0;
 
@@ -64,7 +75,8 @@ Title: Clean Code | Price: ₹1400.0
 Total books registered: 3
 
 
-static variable will be shared by objects , if we change the variable of this it will change all the other things
+static variable will be shared by objects ,
+if we change the variable of this it will change all the other things
 so you can simply call the static variable with the class name
 you can call it using object name , but avoid it
 
@@ -72,3 +84,51 @@ static variables are shared by different way
 
 in non static methods you can share static variables, you are making something as class member not as object memory
 here u are saving memory as well
+
+
+/////////////////////////////////////
+2. The static Keyword
+What is it?
+static marks a member as belonging to the class itself, not to any single instance/object.
+
+Memory is allocated once in the Metaspace/Method Area when the class is loaded by the JVM.
+
+All objects of that class share the exact same copy.
+
+Instance vs. Static Variables
+Instance variable:  Object 1 [x = 10]    Object 2 [x = 20]
+Static variable:    Shared by all ---> [companyName = "Infosys"]
+Code Example
+Java
+class Student {
+    int rollNo;                    // Instance variable: unique per student
+    static String college = "VTU"; // Static variable: shared across all students
+
+    Student(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    void display() {
+        System.out.println("Roll No: " + rollNo + " | College: " + college);
+    }
+}
+
+public class StaticVarDemo {
+    public static void main(String[] args) {
+        Student s1 = new Student(101);
+        Student s2 = new Student(102);
+
+        s1.display(); // Roll No: 101 | College: VTU
+        s2.display(); // Roll No: 102 | College: VTU
+
+        // Changing via class name affects ALL instances
+        Student.college = "IIT";
+
+        s1.display(); // Roll No: 101 | College: IIT
+        s2.display(); // Roll No: 102 | College: IIT
+    }
+}
+Quick Revision Points
+Access syntax: ClassName.variableName (preferred over object.variableName).
+
+Saves memory: avoids duplicating common values across thousands of objects.

@@ -26,3 +26,4 @@ jdk ( jre. (jvm. ))
 
 so java is called as wora ,one time write and other it will run in all machine
 write once and run anywhere
+

@@ -59,3 +59,73 @@ and most cases you need to have one class in one file
 1.try to make class public
 2.try to make instance variable private
 3.method mostly public , if only in subclass protected , dont use that much default in mehtods
+
+////////////////////////////////////
+
+Access Modifiers (Easy Explanation)Real-Life AnalogyThink of access modifiers like privacy settings on social media / real life:private $\rightarrow$ Personal Diary / PIN Code: Only YOU know it. Even your family members (children) cannot touch it.default (No keyword) $\rightarrow$ Living Room / Family Group Chat: Only people inside your own house (package) can access it. Outsiders cannot enter.protected $\rightarrow$ Family Ancestral Property: People in your house (package) can access it, PLUS your children/relatives living in another city (subclasses in other packages) can inherit it!public $\rightarrow$ Public Park / Billboard: Anyone anywhere can see and access it without restrictions.The 4 Access Levels Side-by-SideModifierInside Same Class?Inside Same Package?Subclass in Another Package?Outsider in Another Package?privateYESNONONOdefault (no keyword)YESYESNONOprotectedYESYESYES (via inheritance)NOpublicYESYESYESYESCode Examples for EachFile 1: Inside package bank (Account.java)Javapackage bank;
+
+public class Account {
+    private int pin = 4321;               // private: only Account class can see
+    String accountType = "Savings";       // default: visible inside 'bank' package
+    protected double balance = 50000.0;   // protected: visible inside 'bank' + child classes
+    public String bankName = "HDFC Bank"; // public: visible anywhere in project
+
+    public void showMyOwnPin() {
+        System.out.println("My PIN: " + pin); // OK: inside the same class
+    }
+}
+File 2: Same package bank (BankManager.java)Javapackage bank;
+
+public class BankManager {
+    public static void main(String[] args) {
+        Account acc = new Account();
+
+        // System.out.println(acc.pin);         // ERROR! 'pin' is private
+        System.out.println(acc.accountType);    // OK! 'default' allows same package
+        System.out.println(acc.balance);        // OK! 'protected' allows same package
+        System.out.println(acc.bankName);       // OK! 'public' allows everywhere
+    }
+}
+File 3: Outside package customer (PrivilegedCustomer.java)Javapackage customer;
+
+import bank.Account;
+
+// This class extends Account, so it is a SUBCLASS in a DIFFERENT package
+public class PrivilegedCustomer extends Account {
+    public void checkPrivileges() {
+        // System.out.println(pin);         // ERROR! private
+        // System.out.println(accountType); // ERROR! default cannot leave 'bank' package
+
+        // OK! 'protected' is accessible because we used 'extends Account'
+        System.out.println("Inherited Balance: ₹" + balance); 
+
+        // OK! 'public' is open to everyone
+        System.out.println("Bank: " + bankName); 
+    }
+}
+File 4: Outside package customer (NormalUser.java)Javapackage customer;
+
+import bank.Account;
+
+// Normal class (NOT a child class) in a DIFFERENT package
+public class NormalUser {
+    public static void main(String[] args) {
+        Account acc = new Account();
+
+        // System.out.println(acc.pin);         // ERROR! private
+        // System.out.println(acc.accountType); // ERROR! default
+        // System.out.println(acc.balance);     // ERROR! protected (not a child class)
+        
+        System.out.println(acc.bankName);       // OK! public is accessible everywhere
+    }
+}
+30-Second Quick RevisionPlaintextPackages:
+  - Just folders for Java files.
+  - 'package mypack;' at the top to define.
+  - 'import mypack.MyClass;' to bring into another file.
+
+Access Modifiers:
+  - private   : Only inside the { } of that same class.
+  - default   : Anyone in the same folder/package.
+  - protected : Same folder + child classes in other folders.
+  - public    : Wide open to the whole world.

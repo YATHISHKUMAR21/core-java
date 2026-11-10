@@ -2,9 +2,11 @@
 this is a reference variable pointing directly to the current object whose method or constructor is currently executing.
 
 Primary Uses of this
-Resolving variable shadowing: Differentiates instance fields from constructor/method parameters when they share the same name.
+Resolving variable shadowing: Differentiates instance fields from constructor/method parameters 
+when they share the same name.
 
-Constructor chaining (this(...)): Calls another constructor in the same class. Must always be the first line of the constructor.
+Constructor chaining (this(...)): Calls another constructor in the same class. 
+ always be the first line of the constructor.
 
 Passing the current instance: Can be passed as an argument in method calls or returned from a method (return this;).
 

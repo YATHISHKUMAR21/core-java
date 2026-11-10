@@ -20,3 +20,256 @@ c
 b
 |
 a
+
+
+///////////////////////////////ai notes
+Inheritance in Java
+1. What is Inheritance & Why Do We Need It?
+What is it?
+Inheritance is a core OOP mechanism where one class (child/subclass/derived class) acquires the properties (fields) and behaviors (methods) of another class (parent/superclass/base class).
+
+Achieved using the extends keyword (for classes) or implements keyword (for interfaces).
+
+Represents an IS-A relationship (e.g., Car IS-A Vehicle, Dog IS-A Animal).
+
+Why Do We Need It?
+Code Reusability:
+Write common logic once in a superclass instead of duplicating it across dozens of separate classes.
+
+Method Overriding (Runtime Polymorphism):
+A subclass can provide its own specific implementation of a method defined by the parent class.
+
+Extensibility & Maintainability:
+New features or specialized classes can be added with minimal changes to existing code.
+
+Standardization / Framework Structure:
+Common contracts can be defined at the top level while leaving specific execution details to subclasses.
+
+2. Types of Inheritance in Java
+Supported via Classes:
+1. Single          : A -> B
+2. Multilevel      : A -> B -> C
+3. Hierarchical    : A -> B, A -> C
+
+NOT Supported via Classes (Supported via Interfaces):
+4. Multiple        : A + B -> C   (Diamond Problem)
+5. Hybrid          : Combination (e.g., Hierarchical + Multiple)
+Type 1: Single Inheritance
+A single child class inherits directly from a single parent class.
+
++------------+
+|   Animal   |
++------------+
+      ^
+      | extends
++------------+
+|    Dog     |
++------------+
+Java
+// Parent Class
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Child Class
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class SingleInheritanceDemo {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();  // Inherited from Animal
+        d.bark(); // Defined in Dog
+    }
+}
+Type 2: Multilevel Inheritance
+A class inherits from a child class, forming a multi-tiered inheritance chain.
+
++------------+
+|   Vehicle  |
++------------+
+      ^
+      | extends
++------------+
+|    Car     |
++------------+
+      ^
+      | extends
++------------+
+| ElectricCar|
++------------+
+Java
+class Vehicle {
+    void start() {
+        System.out.println("Vehicle starts.");
+    }
+}
+
+class Car extends Vehicle {
+    void drive() {
+        System.out.println("Car is being driven.");
+    }
+}
+
+class ElectricCar extends Car {
+    void chargeBattery() {
+        System.out.println("Electric car battery is charging.");
+    }
+}
+
+public class MultilevelDemo {
+    public static void main(String[] args) {
+        ElectricCar tesla = new ElectricCar();
+        tesla.start();         // Inherited from Vehicle
+        tesla.drive();         // Inherited from Car
+        tesla.chargeBattery(); // Defined in ElectricCar
+    }
+}
+Type 3: Hierarchical Inheritance
+Multiple child classes inherit from the same single parent class.
+
+        +------------+
+        |   Shape    |
+        +------------+
+           ^        ^
+   extends |        | extends
++----------+-+    +-+----------+
+|   Circle   |    | Rectangle  |
++------------+    +------------+
+Java
+class Shape {
+    void render() {
+        System.out.println("Rendering shape...");
+    }
+}
+
+class Circle extends Shape {
+    void calculateRadius() {
+        System.out.println("Calculating circle radius.");
+    }
+}
+
+class Rectangle extends Shape {
+    void calculatePerimeter() {
+        System.out.println("Calculating rectangle perimeter.");
+    }
+}
+
+public class HierarchicalDemo {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+        c.render();          // From Shape
+        c.calculateRadius(); // From Circle
+
+        Rectangle r = new Rectangle();
+        r.render();              // From Shape
+        r.calculatePerimeter();  // From Rectangle
+    }
+}
+Type 4: Multiple Inheritance (Why not with Classes?)
+Java does not allow a class to extend more than one class.
+
+   +-------+     +-------+
+   |   A   |     |   B   |
+   | show()|     | show()|
+   +-------+     +-------+
+       \             /
+        \ extends?  /
+         v         v
+        +-----------+
+        |     C     |  <-- Which show() does C inherit? (Diamond Problem)
+        +-----------+
+The Diamond Problem
+If class A and class B both define void show(), and class C extends both, the JVM cannot know which parent's show() implementation to execute when calling c.show(). This ambiguity is why Java bans multiple inheritance through classes.
+
+Solution: Use Interfaces
+Because interfaces contain method signatures without conflicting state, a class can implement multiple interfaces safely.
+
+Java
+interface Printable {
+    void print();
+}
+
+interface Showable {
+    void show();
+}
+
+// Implements multiple interfaces
+class Document implements Printable, Showable {
+    public void print() {
+        System.out.println("Printing document...");
+    }
+
+    public void show() {
+        System.out.println("Showing document...");
+    }
+}
+
+public class MultipleInheritanceDemo {
+    public static void main(String[] args) {
+        Document doc = new Document();
+        doc.print();
+        doc.show();
+    }
+}
+Type 5: Hybrid Inheritance
+A combination of two or more types of inheritance (e.g., Hierarchical + Multiple). In Java, this can only be achieved using interfaces.
+
+         +--------------+
+         |    Animal    |  (Hierarchical base)
+         +--------------+
+            ^        ^
+            |        |
+         +----+    +----+
+         |Dog |    |Cat |
+         +----+    +----+
+            \        /
+             \      /   (Multiple via interfaces)
+              v    v
+            +-------+
+            |PetCare|
+            +-------+
+Java
+class LivingBeing {
+    void breathe() {
+        System.out.println("Breathing oxygen...");
+    }
+}
+
+interface Pet {
+    void play();
+}
+
+// Extends one class, implements an interface
+class GoldenRetriever extends LivingBeing implements Pet {
+    public void play() {
+        System.out.println("Playing fetch!");
+    }
+}
+
+public class HybridDemo {
+    public static void main(String[] args) {
+        GoldenRetriever buddy = new GoldenRetriever();
+        buddy.breathe(); // From LivingBeing class
+        buddy.play();    // From Pet interface
+    }
+}
+3. What is NOT Inherited in Java?
+private members: Fields and methods marked private remain accessible only inside the class that declared them (though child classes can still access them through public getters/setters).
+
+Constructors: Subclasses do not inherit constructors. Instead, the subclass invokes the parent constructor using super() or super(args).
+
+Static members: Static methods are hidden, not overridden (Method Hiding).
+
+Quick Revision Table
+Inheritance Type	Supported via Classes?	Supported via Interfaces?	Example Syntax
+Single	Yes	Yes	class B extends A
+Multilevel	Yes	Yes	class C extends B
+Hierarchical	Yes	Yes	class B extends A, class C extends A
+Multiple	No (Diamond Problem)	Yes	class C implements A, B
+Hybrid	No	Yes	class C extends A implements B, D

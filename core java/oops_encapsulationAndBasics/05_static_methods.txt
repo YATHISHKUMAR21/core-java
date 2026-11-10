@@ -1,5 +1,6 @@
 whenever you are using non static method ,
-you need to create an object of it , because if you have to call , u need it to do via object
+you need to create an object of it , 
+because if you have to call , u need it to do via object
 
 class Mobile{
     String brand;
@@ -87,7 +88,8 @@ class Mobile{
     the speciality of static is , it will be called only once irrespective of how many
     objects are being created
 
-    so if 100 objects are created , constructor will get called 100 time ad static block will be called only once
+    so if 100 objects are created , 
+    constructor will get called 100 time and static block will be called only once
 
     public Mobile(){
         brand = ""
@@ -138,3 +140,53 @@ class class Demo{
         there are some situation where we use this like jdbc , like how to initialise STATIC bLOCKS
     }
 }
+
+////////////////////////////
+
+3. Static Methods
+What is it?
+A method marked static can be executed without creating an instance of the class.
+
+Commonly used for utility operations (e.g., Math.sqrt(), Arrays.sort()).
+
+The Two Golden Rules
+A static method cannot access non-static (instance) variables or methods directly.
+
+A static method cannot use this or super keywords, because there is no current object instance.
+
++-------------------------------------------------------+
+|  Static Method                                        |
+|  --> Can access: other static methods, static fields  |
+|  --> CANNOT access: instance fields, instance methods |
++-------------------------------------------------------+
+Code Example
+Java
+class Calculator {
+    static int callCount = 0; // static variable
+    int lastResult = 0;       // instance variable
+
+    // Static method
+    public static int add(int a, int b) {
+        callCount++;
+        // lastResult = a + b; // COMPILER ERROR: Cannot make static reference to non-static field
+        // System.out.println(this); // COMPILER ERROR: Cannot use 'this' in static context
+        return a + b;
+    }
+
+    // Instance method (can access both static and non-static)
+    public void recordResult(int res) {
+        this.lastResult = res;
+        callCount++; // perfectly valid
+    }
+}
+
+public class StaticMethodDemo {
+    public static void main(String[] args) {
+        // Called directly on the class, no 'new Calculator()' needed
+        int sum = Calculator.add(25, 75);
+        System.out.println("Sum: " + sum);
+        System.out.println("Calls made: " + Calculator.callCount);
+    }
+}
+Quick Revision Points
+Why is main() static? So the JVM can invoke Main.main() directly at startup without instantiating the class first.

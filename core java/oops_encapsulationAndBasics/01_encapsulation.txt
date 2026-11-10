@@ -84,3 +84,62 @@ public void setAge(int a){
     age =a;
 }
 
+]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+1. Encapsulation
+What is it?
+Wrapping data (variables) and methods (code) together into a single unit (class).
+
+Also called Data Hiding: Prevents direct outside access to sensitive variables
+so they cannot be corrupted or set to invalid values.
+
+How to achieve it?
+Declare class variables as private.
+
+Provide public getter and setter methods to inspect and update the values.
+
+       +-------------------------------+
+       |             CLASS             |
+       |  [private variable: balance]  |
+       |               ^               |
+       |        controlled via         |
+       |      getters / setters        |
+       +-------------------------------+
+Code Example
+Java
+class BankAccount {
+    // 1. Private fields (hidden from direct access)
+    private double balance;
+
+    // 2. Getter (read access)
+    public double getBalance() {
+        return balance;
+    }
+
+    // 3. Setter with validation (controlled write access)
+    public void setBalance(double amount) {
+        if (amount >= 0) {
+            this.balance = amount;
+        } else {
+            System.out.println("Invalid amount! Balance cannot be negative.");
+        }
+    }
+}
+
+public class EncapsulationDemo {
+    public static void main(String[] args) {
+        BankAccount acc = new BankAccount();
+
+        // acc.balance = -500; // COMPILER ERROR: balance is private
+
+        acc.setBalance(15000); // OK: goes through setter validation
+        System.out.println("Current Balance: ₹" + acc.getBalance());
+    }
+}
+Quick Revision Points
+Security: Callers cannot assign nonsense data (e.g., negative balance, age = 500).
+
+Read-only / Write-only fields: Skip the setter for read-only fields; 
+skip the getter for write-only fields (e.g., passwords).
+
+Flexibility: Internal logic can change without breaking existing caller code.

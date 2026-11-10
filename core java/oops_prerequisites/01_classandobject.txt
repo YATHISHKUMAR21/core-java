@@ -7,7 +7,7 @@ every object
 so like when we need example table , we will give design or len , breadth to carpenter
 and carpenter does the table
 
-similarly in codin world we give design in the form of class and jvm acts as carpenterand created the table
+similarly in coding world, we give design in the form of class and jvm acts as carpenterand created the table
 
 in java whatever you do , you should do inside the class
 

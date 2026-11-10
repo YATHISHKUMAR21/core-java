@@ -1,0 +1,117 @@
+Polymorphism & Binding in Java1. What is Polymorphism?Real-Life AnalogyThink of the word "Poly" (Many) + "Morph" (Forms).Take a person:At home $\rightarrow$ you act like a child.In a classroom $\rightarrow$ you act like a student.In an office $\rightarrow$ you act like an employee.You are the same entity, but you behave differently depending on the situation. In Java, Polymorphism allows a single method name or action to execute different behaviors based on the object or inputs provided.There are two types of Polymorphism in Java:                  POLYMORPHISM
+                 /            \
+                /              \
+    Compile-time (Static)     Runtime (Dynamic)
+    [Early Binding]           [Late Binding]
+           |                         |
+    Method Overloading        Method Overriding
+2. What is "Binding"?Connecting a method call (the line of code invoking the function) to the actual method body (the code block that runs) is called Binding.Plaintextcalculator.add(5, 10);  -----[ BINDING ]----->  int add(int a, int b) { return a + b; }
+     (Method Call)                                    (Actual Code Body)
+The difference between Early and Late binding is simply WHEN this connection happens:If Java decides during compilation $\rightarrow$ Early Binding.If Java decides while the program is actively running $\rightarrow$ Late Binding.3. Early Binding (Compile-Time / Static Binding)What is it?In Early Binding, the compiler knows at compile time exactly which method implementation will run before the program is even launched.When does it happen?Method Overloading (methods with the same name but different parameters).Any method marked static, final, or private:private methods cannot be inherited or overridden.final methods cannot be overridden.static methods belong to the class, not the object.Because no subclass can alter them, the compiler links them immediately.Situation A: Method OverloadingThe compiler looks at the number, type, and order of arguments to lock in the target method right away.Code ExampleJavaclass MathOperations {
+    // Version 1: takes 2 integers
+    int multiply(int a, int b) {
+        return a * b;
+    }
+
+    // Version 2: takes 3 integers
+    int multiply(int a, int b, int c) {
+        return a * b * c;
+    }
+
+    // Version 3: takes 2 doubles
+    double multiply(double a, double b) {
+        return a * b;
+    }
+}
+
+public class EarlyBindingDemo {
+    public static void main(String[] args) {
+        MathOperations math = new MathOperations();
+
+        // Compiler checks arguments: (int, int) -> binds directly to Version 1
+        System.out.println(math.multiply(4, 5));
+
+        // Compiler checks arguments: (int, int, int) -> binds directly to Version 2
+        System.out.println(math.multiply(2, 3, 4));
+
+        // Compiler checks arguments: (double, double) -> binds directly to Version 3
+        System.out.println(math.multiply(2.5, 4.0));
+    }
+}
+OutputPlaintext20
+24
+10.0
+Situation B: static, final, and private MethodsCode ExampleJavaclass SuperUser {
+    // 1. private: cannot be seen by subclasses
+    private void secretKey() {
+        System.out.println("SuperUser secret");
+    }
+
+    // 2. final: cannot be overridden by subclasses
+    final void policy() {
+        System.out.println("Standard company policy");
+    }
+
+    // 3. static: bonded to the class at compile time
+    static void displayGreeting() {
+        System.out.println("Hello from SuperUser static method");
+    }
+}
+
+public class StaticEarlyBindingDemo {
+    public static void main(String[] args) {
+        SuperUser user = new SuperUser();
+        
+        // All of these are bound at compile time:
+        user.policy();
+        SuperUser.displayGreeting();
+    }
+}
+4. Late Binding (Runtime / Dynamic Binding)What is it?In Late Binding, the compiler cannot determine which method body will run at compile time. The binding is postponed until runtime, when the JVM inspects the actual object created in heap memory.When does it happen?Happens with Method Overriding when a parent class reference holds a child class object (Upcasting / Dynamic Method Dispatch).Code ExampleJava// Parent class
+class Instrument {
+    void playSound() {
+        System.out.println("Playing generic instrument sound...");
+    }
+}
+
+// Child class 1
+class Guitar extends Instrument {
+    @Override
+    void playSound() {
+        System.out.println("Strumming acoustic guitar chords!");
+    }
+}
+
+// Child class 2
+class Piano extends Instrument {
+    @Override
+    void playSound() {
+        System.out.println("Playing soft classical piano keys!");
+    }
+}
+
+public class LateBindingDemo {
+    public static void main(String[] args) {
+        // Parent reference variable
+        Instrument myInstrument;
+
+        // The reference holds a Guitar object at runtime
+        myInstrument = new Guitar();
+        myInstrument.playSound(); // JVM checks heap -> calls Guitar's method
+
+        // The reference now holds a Piano object at runtime
+        myInstrument = new Piano();
+        myInstrument.playSound(); // JVM checks heap -> calls Piano's method
+    }
+}
+OutputPlaintextStrumming acoustic guitar chords!
+Playing soft classical piano keys!
+5. Early Binding vs Late BindingFeatureEarly Binding (Static)Late Binding (Dynamic)When Binding OccursCompile timeRuntimeMechanismMethod OverloadingMethod OverridingKeywords Involvedstatic, final, privateVirtual / standard methods (default in Java)Execution SpeedFaster (overhead resolved before execution)Slightly slower (JVM looks up method in table at runtime)FlexibilityLess flexibleHighly flexible & extensibleTarget ResolutionBased on the reference type and method signatureBased on the actual object (new Child()) on the heap30-Second Quick RevisionPlaintextEarly Binding:
+  - Decided by Compiler BEFORE code runs.
+  - Examples: Method Overloading, static methods, final methods, private methods.
+  - Faster performance.
+
+Late Binding:
+  - Decided by JVM WHILE code is running.
+  - Example: Method Overriding (Parent ref = new Child()).
+  - The real object on the Heap decides which method executes.``

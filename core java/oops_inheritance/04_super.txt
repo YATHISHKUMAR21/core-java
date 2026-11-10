@@ -186,3 +186,136 @@ even if we dont mention , object class will be the parents class
 so class A extends object means if a constructor have suoer it is referencing to the 
 constructor of object class
 
+///////////////////
+
+Think of super as simply meaning "my parent".
+
+When a Child class inherits from a Parent class, both might have variables or methods with the exact same name. If you are inside the Child class:
+
+this means: "Use my own version."
+
+super means: "Skip mine, go upstairs and use my parent's version."
+
+There are only 3 real-life situations where you ever use super.
+
+Situation 1: Calling the Parent's Constructor (super())
+When a child is born, the parent's foundation must be set up first.
+
+If the parent has a constructor that needs details (like a brand name), the child must send those details up to the parent using super(...).
+
+Golden Rule: super() must always be the very first line inside the child's constructor.
+
+Code Example:
+Java
+// Parent Class
+class Father {
+    String surname;
+
+    // Parent Constructor
+    Father(String surname) {
+        this.surname = surname;
+        System.out.println("1. Father constructor called! Family name is: " + surname);
+    }
+}
+
+// Child Class
+class Son extends Father {
+    String firstName;
+
+    // Child Constructor
+    Son(String firstName, String surname) {
+        // Send surname to Father's constructor first
+        super(surname); // MUST BE FIRST LINE
+        
+        this.firstName = firstName;
+        System.out.println("2. Son constructor called! Name is: " + firstName);
+    }
+
+    void printFullName() {
+        System.out.println("Full Name: " + firstName + " " + surname);
+    }
+}
+
+public class SuperConstructorDemo {
+    public static void main(String[] args) {
+        Son s = new Son("Rahul", "Sharma");
+        s.printFullName();
+    }
+}
+Output:
+Plaintext
+1. Father constructor called! Family name is: Sharma
+2. Son constructor called! Name is: Rahul
+Full Name: Rahul Sharma
+Situation 2: Both Have the Same Variable Name (super.variable)
+If both Parent and Child have a variable with the exact same name, Java gets confused and picks the Child's variable by default. Use super.variable to force Java to read the Parent's value.
+
+Code Example:
+Java
+// Parent Class
+class Animal {
+    String color = "White"; // Parent's color
+}
+
+// Child Class
+class Dog extends Animal {
+    String color = "Black"; // Child's color
+
+    void showColors() {
+        // Without 'super', it looks inside Dog first
+        System.out.println("Dog's color (Child): " + color);
+
+        // With 'super', it ignores Dog and grabs Animal's color
+        System.out.println("Animal's color (Parent): " + super.color);
+    }
+}
+
+public class SuperVariableDemo {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.showColors();
+    }
+}
+Output:
+Plaintext
+Dog's color (Child): Black
+Animal's color (Parent): White
+Situation 3: Calling Parent's Overridden Method (super.method())
+When the Child overrides a method (replaces it), the original parent method gets hidden. If the Child wants to do its own work plus whatever the parent was already doing, call super.method().
+
+Code Example:
+Java
+// Parent Class
+class Phone {
+    void makeCall() {
+        System.out.println("Connecting audio call...");
+    }
+}
+
+// Child Class
+class SmartPhone extends Phone {
+    @Override
+    void makeCall() {
+        // Run the basic parent feature first
+        super.makeCall(); 
+
+        // Then add the new smartphone feature
+        System.out.println("Switching to HD VoLTE & turning on video camera!");
+    }
+}
+
+public class SuperMethodDemo {
+    public static void main(String[] args) {
+        SmartPhone sp = new SmartPhone();
+        sp.makeCall();
+    }
+}
+Output:
+Plaintext
+Connecting audio call...
+Switching to HD VoLTE & turning on video camera!
+30-Second Quick Summary to Copy into VS Code
+Plaintext
+super()           -> Calls the Parent's constructor (must be line 1).
+super.variable    -> Grabs the Parent's variable when Child has the same name.
+super.method()    -> Runs the Parent's original method before or after Child's logic.

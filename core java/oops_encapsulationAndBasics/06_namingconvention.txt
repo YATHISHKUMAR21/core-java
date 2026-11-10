@@ -28,3 +28,52 @@ the only problem with this you can only call once
 new A().show() you can use it once but you cant reuse this once more
 
 new A() everytime we create , we are creating new object
+
+
+
+//////////////
+4. Object Initialisation in Java (Internally)What really happens under the hood when executing this single line?JavaStudent s = new Student(101, "Amit");
+The Internal Lifecycle (Step-by-Step)1. Class Loading (if not loaded yet)
+       |
+2. Heap Memory Allocation (all fields zeroed out)
+       |
+3. Default Initialization (0, null, false)
+       |
+4. Explicit Field Initialization & Instance Initializer Blocks
+       |
+5. Constructor Execution (super(), assignments via this)
+       |
+6. Reference Assignment (s holds heap address)
+Class Loading & Verification:
+JVM checks if Student.class is already loaded in the Method Area. If not, the ClassLoader loads it, executes static blocks, and initializes static variables.Memory Allocation:
+JVM allocates memory for the new object on the Heap.
+All instance variables are assigned their language-level defaults:Numeric types (byte, short, int, long) $\rightarrow$ 0Floating-point (float, double) $\rightarrow$ 0.0boolean $\rightarrow$ falsechar $\rightarrow$ \u0000Object references $\rightarrow$ nullExplicit Initialization & IIB:
+Inline field initializers (e.g., int score = 50;) and any Instance Initializer Blocks ({ ... }) execute in top-to-bottom file order.Constructor Execution:
+The requested constructor runs:First line: runs super() (parent constructor) or this(...) (chained constructor).Constructor body runs, applying passed arguments to the fields.Reference Binding:
+The memory address of the newly initialized heap object is returned and stored in the reference variable (s), which lives on the Stack frame.Code Trace ExampleJavaclass Order {
+    // Step 2 & 3: allocated in heap, set to default 0, then explicitly set to 1
+    int orderId = 1;
+
+    // Instance Initializer Block (IIB) runs before constructor body
+    {
+        System.out.println("Step A: IIB executed. orderId = " + orderId);
+    }
+
+    // Constructor runs last
+    Order(int id) {
+        this.orderId = id;
+        System.out.println("Step B: Constructor executed. orderId = " + orderId);
+    }
+}
+
+public class InitTraceDemo {
+    public static void main(String[] args) {
+        System.out.println("Starting object creation...");
+        Order ord = new Order(999);
+        System.out.println("Final orderId: " + ord.orderId);
+    }
+}
+OutputPlaintextStarting object creation...
+Step A: IIB executed. orderId = 1
+Step B: Constructor executed. orderId = 999
+Final orderId: 999

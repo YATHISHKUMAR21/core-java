@@ -91,3 +91,93 @@ it depends upon what object you have a(), b()
 it is only possible if there is inhertiance
 
 onkly you can have child class for parent variable
+
+
+///////ai notes
+Dynamic Method Dispatch in Java1. What is Dynamic Method Dispatch?Dynamic Method Dispatch (also called Runtime Polymorphism) is the mechanism by which a call to an overridden method is resolved at runtime rather than compile time.It is implemented when an overridden method is called through a superclass reference variable.Superclass ref = new Subclass();
+ref.overriddenMethod();   // Dynamic Method Dispatch decides which version runs!
+2. The Core Rule: Reference vs. ObjectTo understand Dynamic Method Dispatch, keep these two parts separate:JavaVehicle v = new Car();
+// ^^^        ^^^
+//  |          |
+//  |          +---> Object Type (Heap Memory)  -> Decides WHICH method runs at runtime
+//  +--------------> Reference Type (Stack)     -> Decides WHAT methods are allowed to be called
+Reference Type (Vehicle): Checked by the compiler at compile time. You can only call methods that exist in the Vehicle class.Object Type (new Car()): Checked by the JVM at runtime. If Car overrides the method, the JVM dispatches execution to Car's version.3. How It Works Under the Hood (vtable)When the JVM loads classes, it maintains an internal lookup table called a virtual method table (vtable) for each class:Step 1: Code calls 'ref.speak()'
+Step 2: JVM looks at the heap address stored inside 'ref'.
+Step 3: JVM identifies the actual runtime class (e.g., Dog).
+Step 4: JVM looks up 'speak()' inside Dog's vtable.
+Step 5: Executes Dog's version of the method.
+Because this lookup happens while the program is actively running, it is called Late Binding or Dynamic Binding.4. Code ExampleJava// Superclass
+class Notification {
+    void send() {
+        System.out.println("Sending a generic notification...");
+    }
+}
+
+// Subclass 1
+class EmailNotification extends Notification {
+    @Override
+    void send() {
+        System.out.println("Sending Email via SMTP server.");
+    }
+}
+
+// Subclass 2
+class SmsNotification extends Notification {
+    @Override
+    void send() {
+        System.out.println("Sending SMS via Telecom Gateway.");
+    }
+}
+
+// Subclass 3 (Does NOT override send())
+class PushNotification extends Notification {
+    // Inherits send() directly from Notification
+}
+
+public class DispatchDemo {
+    public static void main(String[] args) {
+        // Superclass reference variable
+        Notification notifier;
+
+        // 1. Points to EmailNotification object
+        notifier = new EmailNotification();
+        notifier.send(); // Dispatches to EmailNotification.send()
+
+        // 2. Points to SmsNotification object
+        notifier = new SmsNotification();
+        notifier.send(); // Dispatches to SmsNotification.send()
+
+        // 3. Points to PushNotification object (no override)
+        notifier = new PushNotification();
+        notifier.send(); // Dispatches to Notification.send()
+    }
+}
+Output:PlaintextSending Email via SMTP server.
+Sending SMS via Telecom Gateway.
+Sending a generic notification...
+5. Important Catch: What Happens with Variables?Dynamic Method Dispatch applies ONLY to methods, NEVER to variables.Variables in Java are resolved at compile time based on the reference type, not the runtime object.Javaclass Parent {
+    int value = 100;
+}
+
+class Child extends Parent {
+    int value = 200; // Variable shadowing
+}
+
+public class VariableTest {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+
+        // Prints Parent's value, NOT Child's!
+        System.out.println(obj.value); // Output: 100
+    }
+}
+6. What Can Prevent Dynamic Method Dispatch?Dynamic Method Dispatch
+ cannot occur on:private methods: Not visible to child classes, 
+ cannot be overridden.static methods: Linked to the class at compile time (Method Hiding).
+ final methods: Cannot be overridden by subclasses.
+ All of the above use Static / Early Binding instead.Quick SummaryFeatureDetailsConceptResolving
+  overridden method calls at runtime.PrerequisitesInheritance + Method Overriding + Upcasting 
+  (Parent ref = new Child()).
+  
+  Deciding FactorThe actual object in the heap (new Child()).VariablesDo not use dynamic dispatch
+ (bound by reference type).MechanismResolved via the JVM's virtual method table (vtable).

@@ -106,7 +106,17 @@ public class LateBindingDemo {
 }
 OutputPlaintextStrumming acoustic guitar chords!
 Playing soft classical piano keys!
-5. Early Binding vs Late BindingFeatureEarly Binding (Static)Late Binding (Dynamic)When Binding OccursCompile timeRuntimeMechanismMethod OverloadingMethod OverridingKeywords Involvedstatic, final, privateVirtual / standard methods (default in Java)Execution SpeedFaster (overhead resolved before execution)Slightly slower (JVM looks up method in table at runtime)FlexibilityLess flexibleHighly flexible & extensibleTarget ResolutionBased on the reference type and method signatureBased on the actual object (new Child()) on the heap30-Second Quick RevisionPlaintextEarly Binding:
+
+5.Early Binding vs Late BindingFeatureEarly Binding (Static)
+Late Binding (Dynamic)When Binding OccursCompile timeRuntimeMechanismMethod 
+OverloadingMethod OverridingKeywords Involvedstatic, final, 
+privateVirtual / standard methods (default in Java)Execution 
+SpeedFaster (overhead resolved before execution)Slightly slower 
+(JVM looks up method in table at runtime)FlexibilityLess flexibleHighly 
+flexible & extensibleTarget ResolutionBased on the reference type 
+and method signatureBased on the actual object (new Child()) 
+on the heap30-Second Quick RevisionPlaintextEarly Binding:
+
   - Decided by Compiler BEFORE code runs.
   - Examples: Method Overloading, static methods, final methods, private methods.
   - Faster performance.

@@ -76,3 +76,122 @@ public class demo{
 
 op - in class a func show
 
+
+The final Keyword in Java1. What is the final Keyword?Real-Life AnalogyThink of final as carving something in stone or putting a padlock on it.A final variable is like a voter ID number $\rightarrow$ once issued, it can never be changed.A final method is like the rules of chess $\rightarrow$ you can play the game, but you cannot rewrite the basic rules.A final class is like an only child with no offspring $\rightarrow$ the family tree stops here, no one can inherit from it.In Java, final is a non-access modifier used to restrict modification:Stop value change (Variables)Stop method overriding (Methods)Stop inheritance (Classes)2. The 3 Uses of final                         final KEYWORD
+                        /      |      \
+                       /       |       \
+               Variable     Method     Class
+                  |            |         |
+             Value cannot   Cannot be  Cannot be
+             be modified   overridden  extended
+             (Constant)               (No subclass)
+Use 1: final Variable (Constants)Once a final variable is assigned a value, it cannot be reassigned. Any attempt to change it causes a compile-time error.Types of Final Variables:Final Local Variable: Initialized before first use; cannot be reassigned.Blank Final Instance Variable: Declared without a value; must be initialized in every constructor.Static Final Variable (Constants): Shared across all instances, defined once in a static block or on the declaration line. By convention, named in UPPER_SNAKE_CASE.Code Example:Javaclass Circle {
+    // 1. Static constant (Class level)
+    public static final double PI = 3.14159;
+
+    // 2. Blank final instance variable (Object level)
+    final int idNumber;
+
+    // Must initialize blank final variable in the constructor
+    Circle(int id) {
+        this.idNumber = id;
+    }
+
+    void calculateArea(double radius) {
+        // 3. Local final variable
+        final double area = PI * radius * radius;
+
+        // area = 50.0; // COMPILER ERROR: Cannot assign a value to final variable 'area'
+        // idNumber = 999; // COMPILER ERROR: Cannot reassign final field 'idNumber'
+
+        System.out.println("ID: " + idNumber + " | Area: " + area);
+    }
+}
+
+public class FinalVariableDemo {
+    public static void main(String[] args) {
+        Circle c = new Circle(101);
+        c.calculateArea(5.0);
+
+        // Circle.PI = 3.14; // COMPILER ERROR: Cannot assign a value to static final variable
+    }
+}
+Output:PlaintextID: 101 | Area: 78.53975
+Catch: Final with Reference Variables (Objects & Arrays)Crucial Rule: When an object or array is declared final, the reference (address) cannot change, but the internal data (state) CAN still be modified!Javapublic class FinalReferenceDemo {
+    public static void main(String[] args) {
+        final StringBuilder sb = new StringBuilder("Hello");
+
+        // VALID: Modifying the contents inside the heap object
+        sb.append(" World"); 
+        System.out.println(sb); // Output: Hello World
+
+        // INVALID / COMPILER ERROR: Cannot point 'sb' to a new object
+        // sb = new StringBuilder("Bye"); 
+    }
+}
+Use 2: final Method (Prevent Overriding)If a method is declared final, subclasses inherit it, but they cannot override it.Why use it?To lock core security, authentication, or business-critical logic so a child class doesn't accidentally or intentionally break the implementation.Enables compiler optimization (uses Early Binding).Code Example:Javaclass BankSecurity {
+    // Regular method: can be overridden
+    void depositPolicy() {
+        System.out.println("Standard cash deposit rules apply.");
+    }
+
+    // Final method: locked forever
+    final void verifyKyc() {
+        System.out.println("Mandatory biometric + Aadhaar/PAN check. CANNOT BE CHANGED.");
+    }
+}
+
+class BranchBank extends BankSecurity {
+    @Override
+    void depositPolicy() {
+        System.out.println("Branch offers zero-fee deposits up to ₹50,000.");
+    }
+
+    // Attempting to override verifyKyc():
+    /*
+    @Override
+    void verifyKyc() {
+        System.out.println("Skip verification for VIPs.");
+    }
+    // COMPILER ERROR: verifyKyc() in BranchBank cannot override verifyKyc() in BankSecurity;
+    // overridden method is final
+    */
+}
+
+public class FinalMethodDemo {
+    public static void main(String[] args) {
+        BranchBank branch = new BranchBank();
+        branch.depositPolicy(); // Overridden version
+        branch.verifyKyc();     // Inherited parent final version
+    }
+}
+Output:PlaintextBranch offers zero-fee deposits up to ₹50,000.
+Mandatory biometric + Aadhaar/PAN check. CANNOT BE CHANGED.
+Use 3: final Class (Prevent Inheritance)When a class is declared final, it cannot be extended by any other class.Why use it?Security: Prevent malicious subclasses from altering class behavior.Immutability: Core Java immutable classes like String, Integer, Double, and other wrapper classes are declared final.Code Example:Java// Final class: no one can inherit from this
+final class SecureVault {
+    void openVault() {
+        System.out.println("Vault unlocked with multi-factor authentication.");
+    }
+}
+
+// Attempting to extend a final class:
+/*
+class HackerVault extends SecureVault {
+    // COMPILER ERROR: Cannot inherit from final 'SecureVault'
+}
+*/
+
+public class FinalClassDemo {
+    public static void main(String[] args) {
+        SecureVault vault = new SecureVault();
+        vault.openVault(); // Can still be instantiated and used normally
+    }
+}
+Note: If a class is declared final, all its methods are implicitly final because no subclass can exist to override them. However, its variables are NOT implicitly final unless explicitly specified.3. Quick Comparison: final vs finally vs finalizeThese three sound similar and are one of the most common Java interview questions:KeywordWhat it isWhere it is usedPurposefinalAccess ModifierVariables, Methods, ClassesImposes restrictions (constant, no override, no inheritance).finallyBlockException Handling (try-catch)Cleanup block that runs no matter what (even if exceptions occur).finalize()MethodObject classCalled by the Garbage Collector before reclaiming memory (deprecated in modern Java).30-Second Quick RevisionPlaintextfinal variable -> Value cannot be changed (Becomes a constant).
+final method   -> Cannot be overridden by subclasses (Uses Early Binding).
+final class    -> Cannot be inherited/extended (e.g., String class).
+
+Rule of Thumb:
+- To make a constant       : static final TYPE NAME = VALUE;
+- To lock behavior         : final void method() { ... }
+- To lock an entire design : final class MyClass { ... }

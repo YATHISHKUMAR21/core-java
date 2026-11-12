@@ -61,3 +61,106 @@ psvm(){
     
 }
 
+
+2. Downcasting (Parent $\rightarrow$ Child)What is it?Converting a superclass reference back to a subclass type.JavaParent p = new Child();  // First upcast
+Child c = (Child) p;     // Explicit downcast
+Explicit: Requires (Subclass) cast syntax.Risk: If the reference does not actually hold an instance of that subclass at runtime, the JVM throws a ClassCastException.Visualizing the Problem: ClassCastExceptionValid Downcast:
+[new Dog()] ---> Upcast to Animal ---> Downcast back to (Dog) ---> SUCCESS!
+
+Invalid Downcast:
+[new Cat()] ---> Upcast to Animal ---> Downcast to (Dog) --------> ClassCastException!
+To avoid this crash, always verify using the instanceof operator before downcasting.Complete Code Example: Upcasting, Downcasting & instanceofJava// Parent Class
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Subclass 1
+class Dog extends Animal {
+    @Override
+    void eat() {
+        System.out.println("Dog eats meat and bones.");
+    }
+
+    void bark() {
+        System.out.println("Dog barks: Woof woof!");
+    }
+}
+
+// Subclass 2
+class Cat extends Animal {
+    @Override
+    void eat() {
+        System.out.println("Cat drinks milk.");
+    }
+
+    void meow() {
+        System.out.println("Cat meows: Meow meow!");
+    }
+}
+
+public class TypeCastingDemo {
+    public static void main(String[] args) {
+        // ==========================================
+        // 1. UPCASTING (Implicit & Safe)
+        // ==========================================
+        Animal a = new Dog(); // Child -> Parent
+        a.eat(); // Executes Dog's overridden eat() via Dynamic Method Dispatch
+
+        // a.bark(); // COMPILER ERROR: 'bark()' does not exist in class Animal!
+
+        System.out.println("-----------------------------------");
+
+        // ==========================================
+        // 2. DOWNCASTING (Explicit)
+        // ==========================================
+        // We know 'a' holds a Dog, so we cast it back to Dog to call bark()
+        Dog d = (Dog) a;
+        d.bark(); // Now accessible!
+
+        System.out.println("-----------------------------------");
+
+        // ==========================================
+        // 3. SAFE DOWNCASTING WITH 'instanceof'
+        // ==========================================
+        Animal unknownAnimal = new Cat();
+
+        makeAnimalSound(unknownAnimal);
+        makeAnimalSound(a); // passing Dog
+    }
+
+    // Helper method handling polymorphic objects safely
+    static void makeAnimalSound(Animal animal) {
+        if (animal instanceof Dog) {
+            Dog d = (Dog) animal; // Safe Downcast
+            d.bark();
+        } else if (animal instanceof Cat) {
+            Cat c = (Cat) animal; // Safe Downcast
+            c.meow();
+        } else {
+            animal.eat();
+        }
+    }
+}
+Output:PlaintextDog eats meat and bones.
+-----------------------------------
+Dog barks: Woof woof!
+-----------------------------------
+Cat meows: Meow meow!
+Dog barks: Woof woof!
+30-Second Quick RevisionPlaintextObject Class:
+  - Root of ALL classes in Java (java.lang.Object).
+  - toString() : Override to print clean object details.
+  - equals()   : Override to compare values instead of memory references.
+
+Upcasting:
+  - Parent p = new Child();
+  - Implicit (automatic). Safe.
+  - Restricts access to parent-declared methods only.
+
+Downcasting:
+  - Child c = (Child) p;
+  - Explicit cast syntax required.
+  - Dangerous: Throws ClassCastException if the heap object isn't actually that Child type.
+  - Always guard with: if (p instanceof Child) { ... }

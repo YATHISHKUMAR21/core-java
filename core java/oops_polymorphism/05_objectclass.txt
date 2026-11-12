@@ -42,4 +42,66 @@
 
   so right click source action generate  equals hashcodes
 
+
+///////////////ai object class
+
+1. The Object Class in JavaWhat is the Object Class?Real-Life AnalogyThink of the Object class as Adam / the biological ancestor of all humanity:No matter who you are or what family you come from, your ancestry traces back to the same root.In Java, java.lang.Object sits at the very top of the entire class hierarchy. Every single class in Java (whether built-in like String, Scanner, or a custom class like Student) directly or indirectly inherits from Object.                  +-------------------+
+                  | java.lang.Object  |  <-- Root superclass of all Java classes
+                  +-------------------+
+                     ^       ^      ^
+           extends   |       |      |   extends
+       +-------------+       |      +-------------+
+       |                     |                    |
+   +-------+             +--------+          +---------+
+   | String|             | System |          | Student | (Your custom class)
+   +-------+             +--------+          +---------+
+If you write class Student { }, the Java compiler automatically adds extends Object behind the scenes:Javaclass Student extends Object { }
+Key Methods of the Object ClassThe Object class defines 11 methods. The 5 most frequently used and overridden are:MethodDefault Behavior in ObjectWhy We Override IttoString()Returns ClassName@HexHashCode (e.g., Student@15db9742)To print meaningful data (e.g., "Student[id=1, name=Rahul]")equals(Object obj)Compares memory references (==), not contentsTo compare actual values inside two distinct objectshashCode()Returns an integer representing the memory addressTo support hashing in collections like HashMap and HashSetgetClass()Returns the runtime Class object (final, cannot override)To inspect class metadata (Reflection, type checks)clone()Creates a field-by-field shallow copy (Cloneable required)To duplicate an object without using newCode Example: Overriding toString() & equals()Javaclass Laptop {
+    String brand;
+    int ram;
+
+    Laptop(String brand, int ram) {
+        this.brand = brand;
+        this.ram = ram;
+    }
+
+    // 1. Overriding toString() for human-readable output
+    @Override
+    public String toString() {
+        return "Laptop [Brand: " + brand + ", RAM: " + ram + "GB]";
+    }
+
+    // 2. Overriding equals() to compare content instead of memory addresses
+    @Override
+    public boolean equals(Object obj) {
+        // Step A: Check if comparing against itself
+        if (this == obj) return true;
+
+        // Step B: Null check and type check
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        // Step C: Cast to Laptop and compare actual fields
+        Laptop other = (Laptop) obj;
+        return this.ram == other.ram && this.brand.equals(other.brand);
+    }
+}
+
+public class ObjectClassDemo {
+    public static void main(String[] args) {
+        Laptop l1 = new Laptop("Dell", 16);
+        Laptop l2 = new Laptop("Dell", 16);
+
+        // Printing calls toString() automatically
+        System.out.println(l1); // Laptop [Brand: Dell, RAM: 16GB]
+
+        // Reference comparison (checks memory addresses)
+        System.out.println("Using == : " + (l1 == l2)); // false (different heap locations)
+
+        // Content comparison using overridden equals()
+        System.out.println("Using equals() : " + l1.equals(l2)); // true (same values)
+    }
+}
+Output:PlaintextLaptop [Brand: Dell, RAM: 16GB]
+Using == : false
+Using equals() : true
   

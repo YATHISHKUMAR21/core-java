@@ -45,3 +45,69 @@ now we can take this as Integer
 int num3 = Integer.parseInt(str);
 num3*2
 
+Wrapper Classes in Java1. What is a Wrapper Class?Real-Life AnalogyImagine a chocolate bar (primitive value like int or double). You can eat it right away, and it's fast and lightweight.
+Now imagine you want to courier that chocolate to a friend. You cannot stick an address label directly onto a melting chocolate bar—you have to put it inside a cardboard gift box (Wrapper Object).In Java:Primitive data types (int, double, char, boolean) are raw, super-fast values—NOT objects.Wrapper classes wrap those primitive values inside a real Java Object so they can be used in places that only accept objects.   Primitive (Raw Value)               Wrapper Class (Object)
+   +-------+                           +-----------------------+
+   |  10   |  ---- Autoboxing ---->    |   Integer Object      |
+   +-------+  <--- Unboxing -------    |     [ value: 10 ]     |
+     (int)                             +-----------------------+
+2. All 8 Primitive Types & Their Wrapper ClassesEvery primitive type has a matching class inside the java.lang package (no import needed):Primitive TypeWrapper ClassMemory SizebyteByte1 byteshortShort2 bytesintInteger (full word)4 byteslongLong8 bytesfloatFloat4 bytesdoubleDouble8 bytescharCharacter (full word)2 bytesbooleanBoolean1 bit3. Why Do We Need Wrapper Classes?Collections Framework (ArrayList, HashMap, HashSet):
+Java collections store only objects, never raw primitives.Java// ArrayList<int> list = new ArrayList<>();     // COMPILER ERROR!
+ArrayList<Integer> list = new ArrayList<>();    // WORKS! Uses Integer wrapper
+Utility & Conversion Methods:
+Wrapper classes come with built-in helper functions—most commonly converting a String from user input or an API into a real number.Javaint num = Integer.parseInt("250");        // "250" -> 250
+double price = Double.parseDouble("99.5"); // "99.5" -> 99.5
+Supporting null Values:
+A primitive int cannot be null (it defaults to 0). In databases or forms, 0 means "zero marks", whereas null means "exam not taken". Only wrapper objects (Integer marks = null;) can store null.Multithreading & Synchronization:
+Synchronization works on objects, not primitives.4. Autoboxing & UnboxingJava handles the conversion between primitives and wrapper objects automatically.Autoboxing: Automatic conversion of a primitive $\rightarrow$ Wrapper Object.Unboxing: Automatic conversion of a Wrapper Object $\rightarrow$ primitive.Code ExampleJavaimport java.util.ArrayList;
+
+public class WrapperDemo {
+    public static void main(String[] args) {
+        // 1. AUTOBOXING (primitive int -> Integer object)
+        int rawScore = 95;
+        Integer boxedScore = rawScore; // Java automatically does Integer.valueOf(rawScore)
+        System.out.println("Boxed Integer object: " + boxedScore);
+
+        // 2. UNBOXING (Integer object -> primitive int)
+        Integer bonus = 5;
+        int totalScore = boxedScore + bonus; // Automatically unboxes both to add them
+        System.out.println("Unboxed total score: " + totalScore);
+
+        // 3. COLLECTIONS USE CASE
+        ArrayList<Integer> marksList = new ArrayList<>();
+        marksList.add(88); // Autoboxing: int 88 -> Integer(88)
+        marksList.add(92);
+        int firstMark = marksList.get(0); // Unboxing: Integer(88) -> int 88
+        System.out.println("First mark from list: " + firstMark);
+
+        // 4. STRING TO NUMBER CONVERSION
+        String inputAge = "21";
+        int age = Integer.parseInt(inputAge); // Converts String to primitive int
+        System.out.println("Next year age: " + (age + 1));
+
+        // 5. USEFUL HELPER METHODS
+        System.out.println("Max int possible: " + Integer.MAX_VALUE);
+        System.out.println("Is 'A' a digit? " + Character.isDigit('A'));
+        System.out.println("Binary of 10: " + Integer.toBinaryString(10));
+    }
+}
+OutputPlaintextBoxed Integer object: 95
+Unboxed total score: 100
+First mark from list: 88
+Next year age: 22
+Max int possible: 2147483647
+Is 'A' a digit? false
+Binary of 10: 1010
+5. Common Trap to Watch Out For!Trap 1: NullPointerException During UnboxingIf a wrapper object is null and Java tries to unbox it into a primitive, your program crashes:JavaInteger count = null;
+int x = count; // CRASH! NullPointerException during auto-unboxing
+Trap 2: Comparing Wrapper Objects with == (Integer Caching)Java caches Integer objects between -128 and 127 to save memory. Outside that range, == compares memory addresses instead of values!JavaInteger a = 100, b = 100;
+System.out.println(a == b);      // true  (cached!)
+
+Integer x = 200, y = 200;
+System.out.println(x == y);      // false (two separate objects in heap!)
+System.out.println(x.equals(y)); // true  (ALWAYS use .equals() for wrapper objects!)
+30-Second Quick RevisionPlaintextWhat is it?   -> Class that wraps a primitive value inside an Object (int -> Integer, char -> Character).
+Why needed?   -> Collections (ArrayList<Integer>), String parsing (Integer.parseInt), allowing null.
+Autoboxing    -> Primitive -> Object  (Integer obj = 10;)
+Unboxing      -> Object -> Primitive  (int num = obj;)
+Golden Rule   -> Always compare Wrapper objects using .equals(), NEVER ==.

@@ -51,3 +51,49 @@ obj.show ()
  }
 
  obj.show();
+
+
+ ///////////////////////
+ 3. Type 4: Anonymous Inner Class (Most Important!)Real-Life AnalogySuppose you need a one-time temporary worker to fix a leaking tap today, and you will never need them again. You don't hire them permanently, print ID cards, or create an employee profile—they do the job on the spot and leave.In Java, an Anonymous Inner Class is a class with NO name that is declared and instantiated at the exact same time for a one-time use.Why Do We Use It?Normally, to override a method of a class or implement an interface, you have to:Create a brand-new .java file (class MyButtonListener implements ClickListener).Write the code.Instantiate it in main().If you only need that custom behavior once, an Anonymous Class lets you write it inline without creating a separate named class!Syntax PatternJavaParentClassOrInterface ref = new ParentClassOrInterface() {
+    // Override methods right here inside curly braces!
+}; // <-- Notice the semicolon at the end!
+Example A: Anonymous Class Extending a Normal/Abstract ClassJavaabstract class Notification {
+    abstract void sendAlert();
+}
+
+public class AnonymousClassDemo {
+    public static void main(String[] args) {
+        
+        // Creating a nameless subclass of Notification and instantiating it in one shot!
+        Notification urgentAlert = new Notification() {
+            @Override
+            void sendAlert() {
+                System.out.println("URGENT SMS: Your OTP is 849201. Do not share!");
+            }
+        }; // <-- Semicolon is mandatory here
+
+        urgentAlert.sendAlert();
+    }
+}
+Output:PlaintextURGENT SMS: Your OTP is 849201. Do not share!
+Example B: Anonymous Class Implementing an InterfaceJavainterface Greeting {
+    void sayHello(String name);
+}
+
+public class AnonymousInterfaceDemo {
+    public static void main(String[] args) {
+        
+        // Implementing the Greeting interface on the fly without creating a class file
+        Greeting kannadaGreeting = new Greeting() {
+            @Override
+            public void sayHello(String name) {
+                System.out.println("Namaskara, " + name + "!");
+            }
+        };
+
+        kannadaGreeting.sayHello("Ravi");
+    }
+}
+Output:PlaintextNamaskara, Ravi!
+4. Normal Class vs. Anonymous ClassFeatureNormal ClassAnonymous Inner ClassClass 
+NameHas an explicit name (class Dog)No name (Compiler generates Outer$1.class)ReusabilityCan create unlimited objects (new Dog())Created and used only once at that spotConstructorsCan define custom constructorsCannot write constructors (since there is no class name!)Extends / ImplementsCan extend 1 class AND implement multiple interfacesCan either extend 1 class OR implement 1 interface at a time

@@ -49,3 +49,127 @@ imagine class having variabke method , class also
 
 if inner class is static it will work , we cannot add static for outside class
 
+//////////////////////
+Inner Classes & Anonymous Classes in Java
+1. What is an Inner Class (Nested Class)?
+Real-Life Analogy
+Think of a Car and its Engine, or a House and its Kitchen:
+
+A Kitchen cannot exist floating in the middle of the street—it only makes sense inside a House.
+
+Because the Kitchen is inside the House, it has direct access to all the house's private resources (water pipes, electricity wiring) without needing permission.
+
+In Java, a class defined inside another class is called a Nested Class (or Inner Class).
+
++--------------------------------------------+
+| Outer Class (e.g., BankAccount)            |
+|   - private double balance = 50000;        |
+|                                            |
+|   +------------------------------------+   |
+|   | Inner Class (e.g., InterestCalc)   |   |
+|   |   -> Can directly access 'balance' |   |
+|   +------------------------------------+   |
++--------------------------------------------+
+Why Use Inner Classes?
+Logical Grouping: If Class B is only useful to Class A, keep B inside A to keep your project clean.
+
+Direct Access to private Members: An inner class can read and modify even the private variables of its outer class.
+
+Stronger Encapsulation: Hides helper classes from the outside world.
+
+2. Types of Inner Classes
+There are 4 types of nested classes in Java:
+
+                    NESTED CLASSES
+                   /              \
+       Static Nested Class     Non-Static (Inner Classes)
+                               /           |            \
+                      Member Inner    Local Inner    Anonymous Inner
+Type 1: Member Inner Class (Non-Static)
+A normal class declared inside an outer class (outside any method).
+
+Rule: You must create an Outer class object first before you can create an Inner class object.
+
+Code Example:
+Java
+class Outer {
+    private String secretMessage = "Vault Unlocked!";
+
+    // Member Inner Class
+    class Inner {
+        void display() {
+            // Directly accesses private member of Outer class!
+            System.out.println("Inner says: " + secretMessage);
+        }
+    }
+}
+
+public class MemberInnerDemo {
+    public static void main(String[] args) {
+        // Step 1: Create Outer object
+        Outer outerObj = new Outer();
+
+        // Step 2: Create Inner object using Outer object
+        Outer.Inner innerObj = outerObj.new Inner();
+        innerObj.display();
+    }
+}
+Output:
+Plaintext
+Inner says: Vault Unlocked!
+Type 2: Static Nested Class (static class)
+A class declared with the static keyword inside an outer class.
+
+Rule: You do NOT need an Outer class object to instantiate it. However, it can only access static members of the outer class.
+
+Code Example:
+Java
+class University {
+    static String uniName = "VTU";
+
+    // Static Nested Class
+    static class Department {
+        void showInfo() {
+            System.out.println("Computer Science Dept at " + uniName);
+        }
+    }
+}
+
+public class StaticNestedDemo {
+    public static void main(String[] args) {
+        // No need for 'new University()' first!
+        University.Department dept = new University.Department();
+        dept.showInfo();
+    }
+}
+Output:
+Plaintext
+Computer Science Dept at VTU
+Type 3: Local Inner Class
+A class written inside a method (just like a local variable). It is completely invisible outside that method.
+
+Code Example:
+Java
+class PaymentProcessor {
+    void process(double amount) {
+        // Local Inner Class inside a method
+        class TaxCalculator {
+            double calculateGst() {
+                return amount * 0.18;
+            }
+        }
+
+        TaxCalculator tax = new TaxCalculator();
+        System.out.println("Total with 18% GST: ₹" + (amount + tax.calculateGst()));
+    }
+}
+
+public class LocalInnerDemo {
+    public static void main(String[] args) {
+        PaymentProcessor pp = new PaymentProcessor();
+        pp.process(1000.0);
+    }
+}
+Output:
+Plaintext
+Total with 18% GST: ₹1180.0
